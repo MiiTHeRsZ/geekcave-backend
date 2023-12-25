@@ -11,3 +11,4 @@ public class GeekcaveApplication {
 	}
 
 }
+// https://docs.api.jikan.moe

@@ -12,7 +12,7 @@
 	<artifactId>geekcave</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>geekcave</name>
-	<description>Demo project for Spring Boot</description>
+	<description>API da aplicação Geek Cave</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>

@@ -1,0 +1,117 @@
+{
+    "data": {
+        "mal_id": 21,
+        "images": {
+            "webp": {
+                "image_url": "https:\/\/cdn.myanimelist.net\/images\/anime\/1244\/138851.webp",
+                "small_image_url": "https:\/\/cdn.myanimelist.net\/images\/anime\/1244\/138851t.webp",
+                "large_image_url": "https:\/\/cdn.myanimelist.net\/images\/anime\/1244\/138851l.webp"
+            }
+        },
+        "title": "One Piece",
+        "title_english": "One Piece",
+        "title_japanese": "ONE PIECE",
+        "title_synonyms": [
+            "OP"
+        ],
+        "synopsis": "Barely surviving in a barrel after passing through a terrible whirlpool at sea, carefree Monkey D. Luffy ends up aboard a ship under attack by fearsome pirates. Despite being a naive-looking teenager, he is not to be underestimated. Unmatched in battle, Luffy is a pirate himself who resolutely pursues the coveted One Piece treasure and the King of the Pirates title that comes with it.\n\nThe late King of the Pirates, Gol D. Roger, stirred up the world before his death by disclosing the whereabouts of his hoard of riches and daring everyone to obtain it. Ever since then, countless powerful pirates have sailed dangerous seas for the prized One Piece only to never return. Although Luffy lacks a crew and a proper ship, he is endowed with a superhuman ability and an unbreakable spirit that make him not only a formidable adversary but also an inspiration to many.\n\nAs he faces numerous challenges with a big smile on his face, Luffy gathers one-of-a-kind companions to join him in his ambitious endeavor, together embracing perils and wonders on their once-in-a-lifetime adventure.\n\n[Written by MAL Rewrite]",
+        "studios": [
+            {
+                "name": "Toei Animation"
+            }
+        ],
+        "genres": [
+            {
+                "mal_id": 1,
+                "name": "Action"
+            },
+            {
+                "mal_id": 2,
+                "name": "Adventure"
+            },
+            {
+                "mal_id": 10,
+                "name": "Fantasy"
+            }
+        ],
+        "explicit_genres": [
+            {
+                "mal_id": 2,
+                "name": "Adventure"
+            },
+            {
+                "mal_id": 10,
+                "name": "Fantasy"
+            }
+        ],
+        "themes": [
+            {
+                "mal_id": 10,
+                "name": "Fantasy"
+            }
+        ],
+        "demographics": [
+            {
+                "mal_id": 27,
+                "name": "Shounen"
+            }
+        ],
+        "theme": {
+            "openings": [
+                "1: \"We Are! (\u30a6\u30a3\u30fc\u30a2\u30fc!)\" by Hiroshi Kitadani (eps 1-47)",
+                "2: \"Believe\" by Folder5 (eps 48-115)",
+                "3: \"Hikari E (\u30d2\u30ab\u30ea\u30d8)\" by The Babystars (eps 116-168)",
+                "4: \"Bon Voyage!\" by Bon-Bon Blanco (eps 169-206)",
+                "5: \"Kokoro no Chizu (\u30b3\u30b3\u30ed\u306e\u3061\u305a)\" by BOYSTYLE (eps 207-263)",
+                "6: \"Brand New World\" by D-51 (eps 264-278)",
+                "7: \"We Are! (\u30a6\u30a3\u30fc\u30a2\u30fc! \u301c7\u4eba\u306e\u9ea6\u308f\u3089\u6d77\u8cca\u56e3\u7bc7\u301c)\" by the Straw Hat Pirates (eps 279-283)",
+                "8: \"Crazy Rainbow\" by Tackey & Tsubasa (eps 284-325)",
+                "9: \"Jungle P\" by 5050 (eps 326-372)",
+                "10: \"We Are (\u30a6\u30a3\u30fc\u30a2\u30fc! \u301c10\u5468\u5e74Ver.\u301c)\" by TVXQ (eps 373-394)",
+                "11: \"Share the World\" by TVXQ (eps 395-425)",
+                "12: \"Kaze wo Sagashite (\u98a8\u3092\u3055\u304c\u3057\u3066)\" by Straw Hat Crew and Mari Yaguchi (eps 426-458)",
+                "13: \"One Day\" by The Rootless (eps 459-491)",
+                "14: \"Fight Together\" by Namie Amuro (eps 493-516)",
+                "15: \"We go! (\u30a6\u30a3\u30fc\u30b4\u30fc!)\" by Hiroshi Kitadani (eps 517-541,543-589)",
+                "16: \"Hands Up!\" by Kouta Shinzato (eps 591-628)",
+                "17: \"Wake up!\" by AAA (eps 629-686)",
+                "18: \"Hard Knock Days\" by GENERATIONS from EXILE TRIBE (eps 687-746)",
+                "19: \"We can! (\u30a6\u30a3\u30fc\u30ad\u30e3\u30f3!)\" by Kishidan and Hiroshi Kitadani (eps 747-806)",
+                "20: \"Hope\" by Namie Amuro (eps 807-855)",
+                "21: \"Super Powers\" by V6 (eps 856-891)",
+                "22: \"OVER THE TOP\" by Hiroshi Kitadani (eps 892-934)",
+                "23: \"DREAMIN' ON\" by Da-iCE (eps 935-1004)",
+                "24: \"PAINT\" by I Don't Like Mondays. (eps 1005-1027,1031-1073)",
+                "25: \"Saikou Toutatsuten (\u6700\u9ad8\u5230\u9054\u70b9)\" by SEKAI NO OWARI (eps 1074-)"
+            ],
+            "endings": [
+                "1: \"memories\" by Maki Otsuki (eps 1-30,808,968)",
+                "2: \"RUN! RUN! RUN!\" by Maki Otsuki (eps 31-63)",
+                "3: \"Watashi ga iru Yo (\u79c1\u304c\u3044\u308b\u3088)\" by TOMATO CUBE (eps 64-73)",
+                "4: \"Souchinosuke (\u3057\u3087\u3046\u3061\u306e\u3059\u3051)\" by Suitei-Shoujo (eps 74-81)",
+                "5: \"BEFORE DAWN\" by AI-SACHI (eps 82-94)",
+                "6: \"fish\" by The Kaleidoscope (eps 95-106)",
+                "7: \"GLORY -Kimi ga iru Kara- (GLORY-\u541b\u304c\u3044\u308b\u304b\u3089-)\" by Takako Uehara (eps 107-118)",
+                "8: \"Shining ray\" by Janne da Arc (eps 119-127,129-132)",
+                "9: \"Family\" by the Straw Hat Pirates (eps 128)",
+                "10: \"Free Will\" by Ruppina (eps 133-156)",
+                "11: \"FAITH\" by Ruppina (eps 157-168)",
+                "12: \"A to Z ~One Piece Edition~ (A to Z\u301cONE PIECE Edition\u301c)\" by ZZ (eps 169-181)",
+                "13: \"Tsuki to Taiyou (\u6708\u3068\u592a\u967d)\" by shela (eps 182-195)",
+                "14: \"DREAMSHIP\" by Aiko Ikuta (eps 196-206)",
+                "15: \"Mirai Koukai (\u672a\u6765\u822a\u6d77)\" by Tackey & Tsubasa (eps 207-230)",
+                "16: \"Eternal Pose (\u30a8\u30bf\u30fc\u30ca\u30eb\u30dd\u30fc\u30ba)\" by Asia Engineer (eps 231-245)",
+                "17: \"Dear friends\" by TRIPLANE (eps 246-255)",
+                "18: \"Asu wa Kurukara (\u660e\u65e5\u306f\u6765\u308b\u304b\u3089)\" by TVXQ (eps 256-263)",
+                "19: \"ADVENTURE WORLD\" by Delicatessen (eps 264-278)",
+                "20: \"One Day\" by The Rootless (eps 492)",
+                "21: \"We go! (\u30a6\u30a3\u30fc\u30b4\u30fc!)\" by Hiroshi Kitadani (eps 542,590)",
+                "22: \"Raise\" by Chilli Beans (eps 1071-)"
+            ]
+        },
+        "characters": [
+            "Monkey D. Luffy",
+            "Nikka"
+        ]
+    }
+}
