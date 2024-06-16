@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>gusta.miithersz</groupId>
 	<artifactId>geekcave</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-Initial Test</version>
 	<name>geekcave</name>
 	<description>API da aplicação Geek Cave</description>
 	<properties>

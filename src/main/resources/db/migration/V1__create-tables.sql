@@ -57,6 +57,7 @@ CREATE TABLE ANIME_CHARACTER (
 
 DROP TABLE IF EXISTS ANIME_X_ANIME_GENRE;
 CREATE TABLE ANIME_X_ANIME_GENRE (
+    anime_x_anime_genre_id INT AUTO_INCREMENT PRIMARY KEY,
     fk_anime_id INT NOT NULL,
     fk_anime_genre_id INT NOT NULL,
 
@@ -66,7 +67,7 @@ CREATE TABLE ANIME_X_ANIME_GENRE (
 
 /* ----------------Mangas---------------- */
 
-DROP TABLE IF EXISTS MANGA_TITLE;
+/* DROP TABLE IF EXISTS MANGA_TITLE;
 CREATE TABLE MANGA_TITLE (
 	manga_title_id INT AUTO_INCREMENT PRIMARY KEY,
     manga_title_default VARCHAR(100) NOT NULL,
@@ -121,11 +122,11 @@ CREATE TABLE MANGA_X_MANGA_GENRE (
 
     FOREIGN KEY (fk_manga_id) REFERENCES MANGA(manga_id),
     FOREIGN KEY (fk_manga_genre_id) REFERENCES MANGA_GENRE(manga_genre_id)
-);
+); */
 
 /* ----------------Games---------------- */
 
-DROP TABLE IF EXISTS GAME_DEVELOPER;
+/* DROP TABLE IF EXISTS GAME_DEVELOPER;
 CREATE TABLE GAME_DEVELOPER (
     game_developer_id INT AUTO_INCREMENT PRIMARY KEY,
     game_developer_name VARCHAR(30) NOT NULL
@@ -182,11 +183,11 @@ CREATE TABLE GAME_X_GAME_GENRE (
 
     FOREIGN KEY (fk_game_id) REFERENCES GAME(game_id),
     FOREIGN KEY (fk_game_genre_id) REFERENCES GAME_GENRE(game_genre_id)
-);
+); */
 
 /* ----------------Animations---------------- */
 
-DROP TABLE IF EXISTS ANIMATION;
+/* DROP TABLE IF EXISTS ANIMATION;
 CREATE TABLE ANIMATION (
 	animation_id INT AUTO_INCREMENT PRIMARY KEY,
     animation_pin BOOLEAN NOT NULL,
@@ -209,10 +210,10 @@ CREATE TABLE ANIMATION_X_ANIMATION_GENRE (
     FOREIGN KEY (fk_animation_id) REFERENCES ANIMATION(animation_id),
     FOREIGN KEY (fk_animation_genre_id) REFERENCES ANIMATION_GENRE(animation_genre_id)
 );
-
+ */
 /* ----------------Animation-Series---------------- */
 
-DROP TABLE IF EXISTS ANIMATION_SERIE;
+/* DROP TABLE IF EXISTS ANIMATION_SERIE;
 CREATE TABLE ANIMATION_SERIE (
 	animation_serie_id INT AUTO_INCREMENT PRIMARY KEY,
     animation_pin BOOLEAN NOT NULL,
@@ -235,11 +236,11 @@ CREATE TABLE ANIMATION_SERIE_X_ANIMATION_SERIE_GENRE (
 
     FOREIGN KEY (fk_animation_serie_id) REFERENCES ANIMATION_SERIE(animation_serie_id),
     FOREIGN KEY (fk_animation_serie_genre_id) REFERENCES ANIMATION_SERIE_GENRE(animation_serie_genre_id)
-);
+); */
 
 /* ----------------Anime-Films---------------- */
 
-DROP TABLE IF EXISTS ANIME_FILM;
+/* DROP TABLE IF EXISTS ANIME_FILM;
 CREATE TABLE ANIME_FILM (
 	anime_film_id INT AUTO_INCREMENT PRIMARY KEY,
     anime_film_pin BOOLEAN NOT NULL,
@@ -261,11 +262,11 @@ CREATE TABLE ANIME_FILM_X_ANIME_FILM_GENRE (
 
     FOREIGN KEY (fk_anime_film_id) REFERENCES ANIME_FILM(anime_film_id),
     FOREIGN KEY (fk_anime_film_genre_id) REFERENCES ANIME_FILM_GENRE(anime_film_genre_id)
-);
+); */
 
 /* ----------------Films---------------- */
 
-DROP TABLE IF EXISTS FILM;
+/* DROP TABLE IF EXISTS FILM;
 CREATE TABLE FILM (
 	film_id INT AUTO_INCREMENT PRIMARY KEY,
     film_pin BOOLEAN NOT NULL,
@@ -287,11 +288,11 @@ CREATE TABLE FILM_X_FILM_GENRE (
 
     FOREIGN KEY (fk_film_id) REFERENCES FILM(film_id),
     FOREIGN KEY (fk_film_genre_id) REFERENCES FILM_GENRE(film_genre_id)
-);
+); */
 
 /* ----------------Series---------------- */
 
-DROP TABLE IF EXISTS SERIE;
+/* DROP TABLE IF EXISTS SERIE;
 CREATE TABLE SERIE (
 	serie_id INT AUTO_INCREMENT PRIMARY KEY,
     serie_pin BOOLEAN NOT NULL,
@@ -314,4 +315,4 @@ CREATE TABLE SERIE_X_SERIE_GENRE (
 
     FOREIGN KEY (fk_serie_id) REFERENCES SERIE(serie_id),
     FOREIGN KEY (fk_serie_genre_id) REFERENCES SERIE_GENRE(serie_genre_id)
-);
+); */

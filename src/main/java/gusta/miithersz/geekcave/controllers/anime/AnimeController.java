@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gusta.miithersz.geekcave.models.anime.AnimeModel;
-/* import gusta.miithersz.geekcave.services.anime.AnimeService; */
+import gusta.miithersz.geekcave.services.anime.AnimeService;
 
 @RestController
 @RequestMapping("animes")
 public class AnimeController {
 
-    /* @Autowired
-    private AnimeService animeService; */
+    @Autowired
+    private AnimeService animeService;
 
     @GetMapping
     public ResponseEntity<?> getAnimeList() {
         List<AnimeModel> animes = new ArrayList<>();
 
         try {
-            /* animes = animeService.getAnimeList(); */
+            animes = animeService.getAnimeList();
 
             if (animes.isEmpty()) {
                 return new ResponseEntity<>("Nenhum anime encontrado!", HttpStatus.NOT_FOUND);
