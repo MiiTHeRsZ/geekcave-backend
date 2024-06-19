@@ -29,7 +29,7 @@ public class AnimeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_id")
-    private Integer animeId;
+    private Long animeId;
 
     @Column(name = "anime_pin")
     private Boolean animePin;

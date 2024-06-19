@@ -28,7 +28,7 @@ public class AnimeXAnimeGenreModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_x_anime_genre_id")
-    private Integer animeXAnimeGenreId;
+    private Long animeXAnimeGenreId;
     
     @OneToOne
     @JoinColumn(name = "fk_anime_id", referencedColumnName = "anime_id")

@@ -28,7 +28,7 @@ public class AnimeThemeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_theme_id")
-    private Integer animeThemeId;
+    private Long animeThemeId;
 
     @OneToOne
     @JoinColumn(name = "fk_anime_id", referencedColumnName = "anime_id")

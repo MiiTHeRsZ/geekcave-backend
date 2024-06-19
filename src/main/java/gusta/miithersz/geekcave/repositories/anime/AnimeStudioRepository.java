@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import gusta.miithersz.geekcave.models.anime.AnimeStudioModel;
 
 @Repository
-public interface AnimeStudioRepository extends JpaRepository<AnimeStudioModel, Integer> {
+public interface AnimeStudioRepository extends JpaRepository<AnimeStudioModel, Long> {
 
 }

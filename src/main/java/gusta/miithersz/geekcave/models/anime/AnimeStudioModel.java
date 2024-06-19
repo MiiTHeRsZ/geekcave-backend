@@ -26,9 +26,12 @@ public class AnimeStudioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_studio_id")
-    private Integer animeStudioId;
+    private Long animeStudioId;
 
     @Column(name = "anime_studio_name")
     private String animeStudioName;
+
+    @Column(name = "anime_studio_img")
+    private String animeStudioImg;
     
 }

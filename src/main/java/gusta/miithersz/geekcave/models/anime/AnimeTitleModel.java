@@ -26,7 +26,7 @@ public class AnimeTitleModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_title_id")
-    private Integer animeTitleId;
+    private Long animeTitleId;
 
     @Column(name = "anime_title_default")
     private String animeTitleDefault;
