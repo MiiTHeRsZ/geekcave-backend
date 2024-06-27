@@ -7,5 +7,7 @@ import gusta.miithersz.geekcave.models.anime.AnimeModel;
 
 @Repository
 public interface AnimeRepository extends JpaRepository<AnimeModel, Long> {
-    
+
+    AnimeModel findAnimeByAnimeId(Long id);
+
 }

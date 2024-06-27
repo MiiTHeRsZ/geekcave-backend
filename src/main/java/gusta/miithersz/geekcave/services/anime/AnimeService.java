@@ -12,7 +12,7 @@ import gusta.miithersz.geekcave.repositories.anime.AnimeRepository;
 
 @Service
 public class AnimeService {
- 
+
     @Autowired
     private AnimeRepository animeRepository;
 
@@ -21,17 +21,21 @@ public class AnimeService {
 
     public List<AnimeModel> getAnimeList() {
         List<AnimeModel> animeList = new ArrayList<>();
-        
+
         try {
             animeList = animeRepository.findAll();
-            
+
             return animeList;
         } catch (Exception e) {
             throw e;
         }
     }
 
-    public AnimeModel postAnime(AnimeModel anime){
+    public AnimeModel getAnimeById(Long id) {
+        return animeRepository.findAnimeByAnimeId(id);
+    }
+
+    public AnimeModel postAnime(AnimeModel anime) {
         AnimeTitleModel animeTitle = animeTitleService.postAnimeTitle(anime.getAnimeTitle());
 
         anime.getAnimeTitle().setAnimeTitleId(animeTitle.getAnimeTitleId());

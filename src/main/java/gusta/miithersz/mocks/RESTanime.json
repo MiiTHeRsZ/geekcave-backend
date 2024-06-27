@@ -1,0 +1,50 @@
+{
+    "animeId": 2,
+    "animePin": true,
+    "animeTitle": {
+        "animeTitleId": 2,
+        "animeTitleDefault": "One Piece",
+        "animeTitleEnglish": "",
+        "animeTitleJapanese": "",
+        "animeTitleSynonyms": "OP"
+    },
+    "animeTier": "S",
+    "animeImg": "./img/opfav.png",
+    "animeStudio": {
+        "animeStudioId": 1,
+        "animeStudioName": "MADHOUSE",
+        "animeStudioImg": "./imgs/anime/studio/mhlogo.png"
+    },
+    "animeSessions": 17,
+    "animeStatus": "Ongoing",
+    "animeSynopsis": "The King of Pirates",
+    "animeGenres": [
+        {
+            "animeGenreId": 1,
+            "animeGenreName": "Action"
+        },
+        {
+            "animeGenreId": 2,
+            "animeGenreName": "Adventure"
+        }
+    ],
+    "animeCharacters": [
+        {
+            "animeCharacterId": 1,
+            "animeCharacterName": "Luffy",
+            "animeCharacterImg": "./img/anime/character/op/luffy.png"
+        },
+        {
+            "animeCharacterId": 2,
+            "animeCharacterName": "Zoro",
+            "animeCharacterImg": "./img/anime/character/op/zoro.png"
+        }
+    ],
+    "animeThemes": [
+        {
+            "animeThemeId": 1,
+            "animeThemeSong": "We Are!",
+            "animeThemeType": "OP"
+        }
+    ]
+}

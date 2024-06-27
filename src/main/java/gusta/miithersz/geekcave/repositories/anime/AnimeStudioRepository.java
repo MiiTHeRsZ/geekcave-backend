@@ -8,4 +8,6 @@ import gusta.miithersz.geekcave.models.anime.AnimeStudioModel;
 @Repository
 public interface AnimeStudioRepository extends JpaRepository<AnimeStudioModel, Long> {
 
+    AnimeStudioModel findAnimeStudioByAnimeStudioId(Long id);
+
 }
