@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class AnimeStudioController {
     private AnimeStudioService animeStudioService;
 
     @GetMapping("all")
+    @Transactional
     public ResponseEntity<?> getAnimeStudioList() {
         List<AnimeStudioModel> animeStudios = new ArrayList<>();
 
@@ -40,6 +42,7 @@ public class AnimeStudioController {
     }
 
     @GetMapping("{id}")
+    @Transactional
     public ResponseEntity<?> getAnimeStudioById(@PathVariable Long id) {
         try {
             return new ResponseEntity<AnimeStudioModel>(animeStudioService.getAnimeStudioById(id), HttpStatus.OK);

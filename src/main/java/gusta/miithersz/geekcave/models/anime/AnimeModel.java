@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,6 +26,26 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(of = "animeId")
 public class AnimeModel {
+
+    public AnimeModel(@Valid DTOAnimeModel anime) {
+        this.animeId = null;
+        this.animePin = anime.animePin();
+        this.animeTitle = new AnimeTitleModel(
+                null,
+                anime.animeTitle().animeTitleDefault(),
+                anime.animeTitle().animeTitleEnglish(),
+                anime.animeTitle().animeTitleJapanese(),
+                anime.animeTitle().animeTitleSynonyms());
+        this.animeTier = anime.animeTier();
+        this.animeImg = anime.animeImg();
+        this.animeStudio = new AnimeStudioModel(
+                anime.animeStudio().animeStudioId(),
+                anime.animeStudio().animeStudioName(),
+                anime.animeStudio().animeStudioImg());
+        this.animeSessions = anime.animeSessions();
+        this.animeStatus = anime.animeStatus();
+        this.animeSynopsis = anime.animeSynopsis();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,13 +66,13 @@ public class AnimeModel {
     @Column(name = "anime_img")
     private String animeImg;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
     @JoinColumn(name = "fk_anime_studio_id", referencedColumnName = "anime_studio_id")
     private AnimeStudioModel animeStudio;
 
     @Column(name = "anime_sessions")
     private Integer animeSessions;
-    
+
     // * Completed / Ep
     @Column(name = "anime_status")
     private String animeStatus;
