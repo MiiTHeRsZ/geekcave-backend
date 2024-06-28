@@ -1,9 +1,8 @@
 package gusta.miithersz.geekcave.services.anime;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import gusta.miithersz.geekcave.models.anime.AnimeModel;
@@ -19,13 +18,9 @@ public class AnimeService {
     @Autowired
     private AnimeTitleService animeTitleService;
 
-    public List<AnimeModel> getAnimeList() {
-        List<AnimeModel> animeList = new ArrayList<>();
-
+    public Page<AnimeModel> getAnimeList(Pageable pageable) {
         try {
-            animeList = animeRepository.findAll();
-
-            return animeList;
+            return animeRepository.findAll(pageable);
         } catch (Exception e) {
             throw e;
         }
@@ -41,6 +36,16 @@ public class AnimeService {
         anime.getAnimeTitle().setAnimeTitleId(animeTitle.getAnimeTitleId());
 
         return animeRepository.save(anime);
+    }
+
+    public AnimeModel putAnime(Long id, AnimeModel anime) {
+        anime.setAnimeId(id);
+
+        return animeRepository.save(anime);
+    }
+
+    public void deleteAnime(Long id) {
+        animeRepository.deleteById(id);
     }
 
 }

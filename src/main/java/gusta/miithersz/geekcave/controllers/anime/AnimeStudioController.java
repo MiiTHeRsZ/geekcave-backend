@@ -17,14 +17,13 @@ import gusta.miithersz.geekcave.services.anime.AnimeStudioService;
 
 
 @RestController
-@RequestMapping("animes/anime_studio")
+@RequestMapping("animes/studio")
 public class AnimeStudioController {
 
     @Autowired
     private AnimeStudioService animeStudioService;
 
     @GetMapping("all")
-    @Transactional
     public ResponseEntity<?> getAnimeStudioList() {
         List<AnimeStudioModel> animeStudios = new ArrayList<>();
 
