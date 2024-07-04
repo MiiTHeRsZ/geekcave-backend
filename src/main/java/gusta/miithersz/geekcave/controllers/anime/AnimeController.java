@@ -31,7 +31,6 @@ public class AnimeController {
 
     @GetMapping("all")
     public ResponseEntity<?> getAnimeList(@PageableDefault(size = 10) Pageable pageable) {
-
         try {
             Page<AnimeModel> animes = animeService.getAnimeList(pageable);
 
@@ -45,15 +44,13 @@ public class AnimeController {
         }
     }
 
-    /**
-     * PathVariable == "/{var}"
-     * RequestParam == value = "search", params = {"id"}
-     * RequestBody
-     */
-
     @GetMapping("{id}")
     public ResponseEntity<?> getAnimeById(@PathVariable Long id) {
         try {
+            if (animeService.getAnimeById(id) == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            
             return new ResponseEntity<AnimeModel>(animeService.getAnimeById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -85,8 +82,8 @@ public class AnimeController {
     public ResponseEntity<?> deleteAnime(@PathVariable Long id) {
         try {
             animeService.deleteAnime(id);
-            
-            return new ResponseEntity<>(HttpStatus.OK);
+
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
