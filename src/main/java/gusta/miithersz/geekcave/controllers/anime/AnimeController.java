@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("animes")
+/* @EnableMethodSecurity(securedEnabled = true) */
 public class AnimeController {
 
     @Autowired
@@ -33,17 +34,17 @@ public class AnimeController {
     public ResponseEntity<?> getAnimeList(@PageableDefault(size = 10) Pageable pageable) {
         try {
             Page<AnimeModel> animes = animeService.getAnimeList(pageable);
-
+            
             if (animes.isEmpty()) {
                 return new ResponseEntity<>("Nenhum anime encontrado!", HttpStatus.NOT_FOUND);
             }
-
+            
             return new ResponseEntity<Page<AnimeModel>>(animes, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @GetMapping("{id}")
     public ResponseEntity<?> getAnimeById(@PathVariable Long id) {
         try {
@@ -56,7 +57,7 @@ public class AnimeController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @PostMapping("anime")
     @Transactional
     public ResponseEntity<?> postAnime(@RequestBody @Valid DTOAnimeModel anime) {
@@ -66,7 +67,7 @@ public class AnimeController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @PutMapping("{id}")
     @Transactional
     public ResponseEntity<?> putAnime(@PathVariable Long id, @RequestBody @Valid DTOAnimeModel anime) {
@@ -76,13 +77,14 @@ public class AnimeController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     @DeleteMapping("{id}")
     @Transactional
+    /* @Secured("ROLE_ADMIN") */
     public ResponseEntity<?> deleteAnime(@PathVariable Long id) {
         try {
             animeService.deleteAnime(id);
-
+            
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

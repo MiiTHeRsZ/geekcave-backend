@@ -28,6 +28,7 @@ public class SecurityConfigurations {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(ahr -> {
                     ahr.requestMatchers(HttpMethod.POST, "auth").permitAll();
+                    /* ahr.requestMatchers(HttpMethod.DELETE, "anime").hasRole("ADMIN"); */
                     ahr.anyRequest().authenticated();
                 })
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
