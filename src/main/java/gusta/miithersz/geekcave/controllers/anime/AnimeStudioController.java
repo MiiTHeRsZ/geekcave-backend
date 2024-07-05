@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import gusta.miithersz.geekcave.models.anime.AnimeStudioModel;
 import gusta.miithersz.geekcave.services.anime.AnimeStudioService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
 @RequestMapping("animes/studio")
+@SecurityRequirement(name = "bearer-key")
 public class AnimeStudioController {
 
     @Autowired

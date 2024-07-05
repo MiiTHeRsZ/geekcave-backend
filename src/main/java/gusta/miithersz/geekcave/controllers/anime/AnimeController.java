@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import gusta.miithersz.geekcave.models.anime.AnimeModel;
 import gusta.miithersz.geekcave.models.anime.DTOAnimeModel;
 import gusta.miithersz.geekcave.services.anime.AnimeService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("animes")
 /* @EnableMethodSecurity(securedEnabled = true) */
+@SecurityRequirement(name = "bearer-key")
 public class AnimeController {
 
     @Autowired
