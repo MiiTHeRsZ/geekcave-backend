@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import gusta.miithersz.geekcave.models.anime.AnimeModel;
 import gusta.miithersz.geekcave.models.anime.DTOAnimeModel;
+import gusta.miithersz.geekcave.models.anime.FinalDTOAnime;
 import gusta.miithersz.geekcave.services.anime.AnimeService;
+import gusta.miithersz.geekcave.services.anime.FinalAnimeService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("animes")
@@ -31,6 +34,9 @@ public class AnimeController {
 
     @Autowired
     private AnimeService animeService;
+
+    @Autowired 
+    private FinalAnimeService finalAnimeService;
 
     @GetMapping("all")
     public ResponseEntity<?> getAnimeList(@PageableDefault(size = 10) Pageable pageable) {
@@ -59,6 +65,20 @@ public class AnimeController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("full/{id}")
+    public ResponseEntity<?> getFullAnimeById(@PathVariable Long id) {
+        try {
+            if (finalAnimeService.getFullAnimeById(id) == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            
+            return new ResponseEntity<FinalDTOAnime>(finalAnimeService.getFullAnimeById(id), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
     
     @PostMapping("anime")
     @Transactional

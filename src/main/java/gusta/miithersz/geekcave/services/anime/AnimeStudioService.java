@@ -35,4 +35,8 @@ public class AnimeStudioService {
         }
     }
 
+    public AnimeStudioModel postAnimeStudio(AnimeStudioModel animeStudio) {
+        return animeStudioRepository.save(animeStudio);
+    }
+
 }

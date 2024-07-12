@@ -1,6 +1,6 @@
 package gusta.miithersz.geekcave.models.anime;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public record FinalDTOAnime(
         Long animeId,
@@ -12,8 +12,8 @@ public record FinalDTOAnime(
         Integer animeSessions,
         String animeStatus,
         String animeSynopsis,
-        ArrayList<AnimeGenreModel> animeGenres,
-        ArrayList<AnimeCharacterModel> animeCharacters,
-        ArrayList<AnimeThemeModel> animeThemes) {
+        List<AnimeGenreModel> animeGenres,
+        List<AnimeCharacterModel> animeCharacters,
+        List<AnimeThemeModel> animeThemes) {
 
 }
