@@ -46,7 +46,8 @@ public class AnimeGenreController {
     @Transactional
     public ResponseEntity<?> postAnimeGenre(DTOAnimeGenreModel animeGenre) {
         try {
-            return new ResponseEntity<>(animeGenreService.postAnimeGenre(new AnimeGenreModel(animeGenre)), HttpStatus.CREATED);
+            return new ResponseEntity<>(animeGenreService.postAnimeGenre(new AnimeGenreModel(animeGenre)),
+                    HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -56,7 +57,8 @@ public class AnimeGenreController {
     @Transactional
     public ResponseEntity<?> putAnimeGenre(@PathVariable("id") Long id, DTOAnimeGenreModel animeGenre) {
         try {
-            return new ResponseEntity<>(animeGenreService.putAnimeGenre(id, new AnimeGenreModel(animeGenre)), HttpStatus.OK);
+            return new ResponseEntity<>(animeGenreService.putAnimeGenre(id, new AnimeGenreModel(animeGenre)),
+                    HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -72,5 +74,6 @@ public class AnimeGenreController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
 }
