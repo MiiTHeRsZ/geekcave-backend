@@ -23,6 +23,10 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "animeTitleId")
 public class AnimeTitleModel {
     
+    public AnimeTitleModel(DTOAnimeTitleModel animeTitle) {
+        this(null, animeTitle.animeTitleDefault(), animeTitle.animeTitleEnglish(), animeTitle.animeTitleJapanese(), animeTitle.animeTitleSynonyms());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_title_id")

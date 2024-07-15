@@ -25,6 +25,10 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "animeCharacterId")
 public class AnimeCharacterModel {
     
+    public AnimeCharacterModel(DTOAnimeCharacterModel animeCharacter) {
+        this(null, animeCharacter.anime(), animeCharacter.animeCharacterName(), animeCharacter.animeCharacterImg());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_character_id")

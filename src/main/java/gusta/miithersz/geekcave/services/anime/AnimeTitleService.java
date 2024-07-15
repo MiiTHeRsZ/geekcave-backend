@@ -16,4 +16,10 @@ public class AnimeTitleService {
         return animeTitleRepository.save(animeTitle);
     }
 
+    public AnimeTitleModel putAnimeTitle(Long id, AnimeTitleModel animeTitle) {
+        animeTitle.setAnimeTitleId(id);
+
+        return animeTitleRepository.save(animeTitle);
+    }
+
 }
