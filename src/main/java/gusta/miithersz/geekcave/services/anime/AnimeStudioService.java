@@ -39,4 +39,14 @@ public class AnimeStudioService {
         return animeStudioRepository.save(animeStudio);
     }
 
+    public AnimeStudioModel putAnimeStudio(Long id, AnimeStudioModel animeStudioModel) {
+        animeStudioModel.setAnimeStudioId(id);
+
+        return animeStudioRepository.save(animeStudioModel);
+    }
+
+    public void deleteAnimeStudio(Long id) {
+        animeStudioRepository.deleteById(id);
+    }
+
 }
