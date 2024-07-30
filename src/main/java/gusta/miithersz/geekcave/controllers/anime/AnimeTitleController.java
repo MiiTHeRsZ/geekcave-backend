@@ -16,14 +16,14 @@ import gusta.miithersz.geekcave.services.anime.AnimeTitleService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("anime/title")
+@RequestMapping("/anime/title")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeTitleController {
 
     @Autowired
     private AnimeTitleService animeTitleService;
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> putAnimeTitle(@PathVariable("id") Long id, @RequestBody DTOAnimeTitleModel animeTitle) {
         try {

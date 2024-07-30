@@ -20,7 +20,7 @@ import gusta.miithersz.geekcave.services.anime.AnimeGenreService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("animes/genre")
+@RequestMapping("/animes/genre")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeGenreController {
 
@@ -53,7 +53,7 @@ public class AnimeGenreController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> putAnimeGenre(@PathVariable("id") Long id, DTOAnimeGenreModel animeGenre) {
         try {
@@ -64,7 +64,7 @@ public class AnimeGenreController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deleteAnimeGenre(@PathVariable("id") Long id) {
         try {

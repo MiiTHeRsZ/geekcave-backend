@@ -19,6 +19,7 @@ import lombok.ToString;
 
 @Entity(name = "Anime")
 @Table(name = "anime")
+// * @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -47,6 +48,8 @@ public class AnimeModel {
         this.animeSynopsis = anime.animeSynopsis();
     }
 
+    // * UUID
+    // ! Long to String | BigInt to Varchar
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_id")

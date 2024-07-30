@@ -22,14 +22,14 @@ import gusta.miithersz.geekcave.services.anime.AnimeStudioService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("animes/studio")
+@RequestMapping("/animes/studio")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeStudioController {
 
     @Autowired
     private AnimeStudioService animeStudioService;
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public ResponseEntity<?> getAnimeStudioList() {
         List<AnimeStudioModel> animeStudios = new ArrayList<>();
 
@@ -46,7 +46,7 @@ public class AnimeStudioController {
         }
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getAnimeStudioById(@PathVariable Long id) {
         try {
             return new ResponseEntity<AnimeStudioModel>(animeStudioService.getAnimeStudioById(id), HttpStatus.OK);
@@ -66,7 +66,7 @@ public class AnimeStudioController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> putAnimeStudio(@PathVariable Long id, @RequestBody DTOAnimeStudioModel animeStudio) {
         try {
@@ -77,7 +77,7 @@ public class AnimeStudioController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deleteAnimeStudio(@PathVariable Long id) {
         try {

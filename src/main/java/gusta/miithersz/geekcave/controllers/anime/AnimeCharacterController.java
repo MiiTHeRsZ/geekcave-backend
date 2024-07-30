@@ -21,14 +21,14 @@ import gusta.miithersz.geekcave.services.anime.AnimeCharacterService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("anime/character")
+@RequestMapping("/anime/character")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeCharacterController {
 
     @Autowired
     private AnimeCharacterService animeCharacterService;
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public ResponseEntity<?> getAnimeCharacterList(@PageableDefault(size = 10) Pageable pageable) {
         try {
             Page<AnimeCharacterModel> animeCharacters = animeCharacterService.getAnimeCharacterList(pageable);
@@ -43,7 +43,7 @@ public class AnimeCharacterController {
         }
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getAnimeCharacterById(@PathVariable("id") Long id) {
         try {
             return new ResponseEntity<>(animeCharacterService.getAnimeCharacter(id), HttpStatus.OK);
@@ -64,7 +64,7 @@ public class AnimeCharacterController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> putAnimeCharacter(@PathVariable("id") Long id, DTOAnimeCharacterModel animeCharacter) {
         try {
@@ -76,7 +76,7 @@ public class AnimeCharacterController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> deleteAnimeCharacter(@PathVariable("id") Long id) {
         try {

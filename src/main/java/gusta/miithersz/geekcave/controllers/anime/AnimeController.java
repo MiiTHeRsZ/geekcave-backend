@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("animes")
+@RequestMapping("/animes")
 /* @EnableMethodSecurity(securedEnabled = true) */
 @SecurityRequirement(name = "bearer-key")
 public class AnimeController {
@@ -38,7 +38,7 @@ public class AnimeController {
     @Autowired 
     private FinalAnimeService finalAnimeService;
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public ResponseEntity<?> getAnimeList(@PageableDefault(size = 10) Pageable pageable) {
         try {
             Page<AnimeModel> animes = animeService.getAnimeList(pageable);
@@ -53,7 +53,7 @@ public class AnimeController {
         }
     }
     
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getAnimeById(@PathVariable Long id) {
         try {
             if (animeService.getAnimeById(id) == null) {
@@ -66,7 +66,7 @@ public class AnimeController {
         }
     }
 
-    @GetMapping("full/{id}")
+    @GetMapping("/full/{id}")
     public ResponseEntity<?> getFullAnimeById(@PathVariable Long id) {
         try {
             if (finalAnimeService.getFullAnimeById(id) == null) {
@@ -79,8 +79,8 @@ public class AnimeController {
         }
     }
     
-    
-    @PostMapping("anime")
+    /* Return 204 no content, set this default */
+    @PostMapping("/anime")
     @Transactional
     public ResponseEntity<?> postAnime(@RequestBody @Valid DTOAnimeModel anime) {
         try {
@@ -90,7 +90,7 @@ public class AnimeController {
         }
     }
     
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> putAnime(@PathVariable Long id, @RequestBody @Valid DTOAnimeModel anime) {
         try {
@@ -100,7 +100,7 @@ public class AnimeController {
         }
     }
     
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @Transactional
     /* @Secured("ROLE_ADMIN") */
     public ResponseEntity<?> deleteAnime(@PathVariable Long id) {
