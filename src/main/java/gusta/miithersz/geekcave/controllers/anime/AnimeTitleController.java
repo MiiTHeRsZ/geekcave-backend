@@ -33,7 +33,7 @@ public class AnimeTitleController {
             return new ResponseEntity<Page<AnimeTitleModel>>(
                     animeTitleService.getAnimeTitleByName(animeTitleName, pageable), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -44,7 +44,7 @@ public class AnimeTitleController {
             return new ResponseEntity<AnimeTitleModel>(
                     animeTitleService.putAnimeTitle(id, new AnimeTitleModel(animeTitle)), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

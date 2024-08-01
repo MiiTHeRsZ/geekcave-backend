@@ -25,11 +25,15 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "animeXAnimeGenreId")
 public class AnimeXAnimeGenreModel {
 
+    public AnimeXAnimeGenreModel(DTOAnimeXAnimeGenreModel animeXAnimeGenre) {
+        this(null, new AnimeModel(animeXAnimeGenre.anime()), new AnimeGenreModel(animeXAnimeGenre.animeGenre()));
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_x_anime_genre_id")
     private Long animeXAnimeGenreId;
-    
+
     @OneToOne
     @JoinColumn(name = "fk_anime_id", referencedColumnName = "anime_id")
     private AnimeModel anime;
@@ -37,5 +41,5 @@ public class AnimeXAnimeGenreModel {
     @OneToOne
     @JoinColumn(name = "fk_anime_genre_id", referencedColumnName = "anime_genre_id")
     private AnimeGenreModel animeGenre;
-    
+
 }
