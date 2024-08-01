@@ -30,10 +30,10 @@ public class AnimeCharacterController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> postAnimeCharacter(DTOAnimeCharacterModel animeCharacter) {
+    public ResponseEntity<?> postAnimeCharacter(DTOAnimeCharacterModel character) {
         try {
             return new ResponseEntity<>(
-                    animeCharacterService.postAnimeCharacter(new AnimeCharacterModel(animeCharacter)),
+                    animeCharacterService.postAnimeCharacter(new AnimeCharacterModel(character)),
                     HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -66,10 +66,10 @@ public class AnimeCharacterController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeCharacter(@PathVariable Long id, DTOAnimeCharacterModel animeCharacter) {
+    public ResponseEntity<?> putAnimeCharacter(@PathVariable Long id, DTOAnimeCharacterModel character) {
         try {
             return new ResponseEntity<>(
-                    animeCharacterService.putAnimeCharacter(id, new AnimeCharacterModel(animeCharacter)),
+                    animeCharacterService.putAnimeCharacter(id, new AnimeCharacterModel(character)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

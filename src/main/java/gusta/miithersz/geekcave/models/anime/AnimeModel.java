@@ -31,18 +31,10 @@ public class AnimeModel {
     public AnimeModel(@Valid DTOAnimeModel anime) {
         this.animeId = null;
         this.animePin = anime.animePin();
-        this.animeTitle = new AnimeTitleModel(
-                null,
-                anime.animeTitle().animeTitleDefault(),
-                anime.animeTitle().animeTitleEnglish(),
-                anime.animeTitle().animeTitleJapanese(),
-                anime.animeTitle().animeTitleSynonyms());
+        this.animeTitle = new AnimeTitleModel(anime.animeTitle());
         this.animeTier = anime.animeTier();
         this.animeImg = anime.animeImg();
-        this.animeStudio = new AnimeStudioModel(
-                anime.animeStudio().animeStudioId(),
-                anime.animeStudio().animeStudioName(),
-                anime.animeStudio().animeStudioImg());
+        this.animeStudio = new AnimeStudioModel(anime.animeStudio());
         this.animeSessions = anime.animeSessions();
         this.animeStatus = anime.animeStatus();
         this.animeSynopsis = anime.animeSynopsis();

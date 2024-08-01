@@ -24,7 +24,11 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(of = "animeThemeId")
 public class AnimeThemeModel {
-    
+
+    public AnimeThemeModel(DTOAnimeThemeModel theme) {
+        this(null, new AnimeModel(theme.anime()), theme.animeThemeSong(), theme.animeThemeType());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "anime_theme_id")

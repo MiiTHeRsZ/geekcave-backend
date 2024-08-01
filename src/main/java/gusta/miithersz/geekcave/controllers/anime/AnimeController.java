@@ -37,6 +37,17 @@ public class AnimeController {
 
     @Autowired 
     private FinalAnimeService finalAnimeService;
+    
+    /* Return 204 no content, set this default */
+    @PostMapping("/anime")
+    @Transactional
+    public ResponseEntity<?> postAnime(@RequestBody @Valid DTOAnimeModel anime) {
+        try {
+            return new ResponseEntity<AnimeModel>(animeService.postAnime(new AnimeModel(anime)), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/all")
     public ResponseEntity<?> getAnimeList(@PageableDefault(size = 10) Pageable pageable) {
@@ -74,17 +85,6 @@ public class AnimeController {
             }
             
             return new ResponseEntity<FinalDTOAnime>(finalAnimeService.getFullAnimeById(id), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-    
-    /* Return 204 no content, set this default */
-    @PostMapping("/anime")
-    @Transactional
-    public ResponseEntity<?> postAnime(@RequestBody @Valid DTOAnimeModel anime) {
-        try {
-            return new ResponseEntity<AnimeModel>(animeService.postAnime(new AnimeModel(anime)), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

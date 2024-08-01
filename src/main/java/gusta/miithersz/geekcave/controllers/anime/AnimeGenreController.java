@@ -27,6 +27,17 @@ public class AnimeGenreController {
     @Autowired
     private AnimeGenreService animeGenreService;
 
+    @PostMapping
+    @Transactional
+    public ResponseEntity<?> postAnimeGenre(DTOAnimeGenreModel genre) {
+        try {
+            return new ResponseEntity<>(animeGenreService.postAnimeGenre(new AnimeGenreModel(genre)),
+                    HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping
     public ResponseEntity<?> getAnimeGenre() {
         try {
@@ -42,22 +53,12 @@ public class AnimeGenreController {
         }
     }
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity<?> postAnimeGenre(DTOAnimeGenreModel animeGenre) {
-        try {
-            return new ResponseEntity<>(animeGenreService.postAnimeGenre(new AnimeGenreModel(animeGenre)),
-                    HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
+    // ! Maybe patch ?
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeGenre(@PathVariable("id") Long id, DTOAnimeGenreModel animeGenre) {
+    public ResponseEntity<?> putAnimeGenre(@PathVariable("id") Long id, DTOAnimeGenreModel genre) {
         try {
-            return new ResponseEntity<>(animeGenreService.putAnimeGenre(id, new AnimeGenreModel(animeGenre)),
+            return new ResponseEntity<>(animeGenreService.putAnimeGenre(id, new AnimeGenreModel(genre)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

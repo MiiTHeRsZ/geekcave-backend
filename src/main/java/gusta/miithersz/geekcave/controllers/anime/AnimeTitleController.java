@@ -27,21 +27,22 @@ public class AnimeTitleController {
     @Autowired
     private AnimeTitleService animeTitleService;
 
+    @GetMapping("/search")
+    public ResponseEntity<?> getAnimeTitleByName(@RequestParam("name") String animeTitleName, Pageable pageable) {
+        try {
+            return new ResponseEntity<Page<AnimeTitleModel>>(
+                    animeTitleService.getAnimeTitleByName(animeTitleName, pageable), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> putAnimeTitle(@PathVariable Long id, @RequestBody DTOAnimeTitleModel animeTitle) {
         try {
             return new ResponseEntity<AnimeTitleModel>(
                     animeTitleService.putAnimeTitle(id, new AnimeTitleModel(animeTitle)), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping("/search")
-    public ResponseEntity<?> getAnimeTitleByName(@RequestParam("name") String animeTitleName, Pageable pageable) {
-        try {
-            return new ResponseEntity<Page<AnimeTitleModel>>(animeTitleService.getAnimeTitleByName(animeTitleName, pageable), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

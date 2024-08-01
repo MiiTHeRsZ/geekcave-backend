@@ -29,6 +29,17 @@ public class AnimeStudioController {
     @Autowired
     private AnimeStudioService animeStudioService;
 
+    @PostMapping
+    @Transactional
+    public ResponseEntity<?> postAnimeStudio(@RequestBody DTOAnimeStudioModel animeStudio) {
+        try {
+            return new ResponseEntity<AnimeStudioModel>(
+                    animeStudioService.postAnimeStudio(new AnimeStudioModel(animeStudio)), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/all")
     public ResponseEntity<?> getAnimeStudioList() {
         List<AnimeStudioModel> animeStudios = new ArrayList<>();
@@ -50,17 +61,6 @@ public class AnimeStudioController {
     public ResponseEntity<?> getAnimeStudioById(@PathVariable Long id) {
         try {
             return new ResponseEntity<AnimeStudioModel>(animeStudioService.getAnimeStudioById(id), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @PostMapping
-    @Transactional
-    public ResponseEntity<?> postAnimeStudio(@RequestBody DTOAnimeStudioModel animeStudio) {
-        try {
-            return new ResponseEntity<AnimeStudioModel>(
-                    animeStudioService.postAnimeStudio(new AnimeStudioModel(animeStudio)), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
