@@ -28,6 +28,18 @@ public class AnimeCharacterController {
     @Autowired
     private AnimeCharacterService animeCharacterService;
 
+    @PostMapping
+    @Transactional
+    public ResponseEntity<?> postAnimeCharacter(DTOAnimeCharacterModel animeCharacter) {
+        try {
+            return new ResponseEntity<>(
+                    animeCharacterService.postAnimeCharacter(new AnimeCharacterModel(animeCharacter)),
+                    HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/all")
     public ResponseEntity<?> getAnimeCharacterList(@PageableDefault(size = 10) Pageable pageable) {
         try {
@@ -44,7 +56,7 @@ public class AnimeCharacterController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getAnimeCharacterById(@PathVariable("id") Long id) {
+    public ResponseEntity<?> getAnimeCharacterById(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(animeCharacterService.getAnimeCharacter(id), HttpStatus.OK);
         } catch (Exception e) {
@@ -52,21 +64,9 @@ public class AnimeCharacterController {
         }
     }
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity<?> postAnimeCharacter(DTOAnimeCharacterModel animeCharacter) {
-        try {
-            return new ResponseEntity<>(
-                    animeCharacterService.postAnimeCharacter(new AnimeCharacterModel(animeCharacter)),
-                    HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeCharacter(@PathVariable("id") Long id, DTOAnimeCharacterModel animeCharacter) {
+    public ResponseEntity<?> putAnimeCharacter(@PathVariable Long id, DTOAnimeCharacterModel animeCharacter) {
         try {
             return new ResponseEntity<>(
                     animeCharacterService.putAnimeCharacter(id, new AnimeCharacterModel(animeCharacter)),
@@ -78,10 +78,10 @@ public class AnimeCharacterController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteAnimeCharacter(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteAnimeCharacter(@PathVariable Long id) {
         try {
             animeCharacterService.deleteAnimeCharacter(id);
-            
+
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
