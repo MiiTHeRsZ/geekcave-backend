@@ -1,9 +1,8 @@
 package gusta.miithersz.geekcave.controllers.anime;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,17 +40,15 @@ public class AnimeStudioController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAnimeStudioList() {
-        List<AnimeStudioModel> animeStudios = new ArrayList<>();
-
+    public ResponseEntity<?> getAnimeStudioList(Pageable pageable) {
         try {
-            animeStudios = animeStudioService.getAnimeStudioList();
+            Page<AnimeStudioModel> animeStudios = animeStudioService.getAnimeStudioList(pageable);
 
             if (animeStudios.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
-            return new ResponseEntity<List<AnimeStudioModel>>(animeStudios, HttpStatus.OK);
+            return new ResponseEntity<Page<AnimeStudioModel>>(animeStudios, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

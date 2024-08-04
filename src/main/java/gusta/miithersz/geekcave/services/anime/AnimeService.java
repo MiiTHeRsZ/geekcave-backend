@@ -37,7 +37,7 @@ public class AnimeService {
         AnimeTitleModel animeTitle = animeTitleService.postAnimeTitle(anime.getAnimeTitle());
 
         anime.getAnimeTitle().setAnimeTitleId(animeTitle.getAnimeTitleId());
-
+        
         return animeRepository.save(anime);
     }
 

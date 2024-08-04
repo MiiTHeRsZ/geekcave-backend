@@ -25,7 +25,7 @@ import lombok.ToString;
 public class AnimeGenreModel {
 
     public AnimeGenreModel(DTOAnimeGenreModel animeGenre) {
-        this(null, animeGenre.animeGenreName());
+        this(animeGenre.animeGenreId() != null ? animeGenre.animeGenreId() : null, animeGenre.animeGenreName());
     }
 
     @Id

@@ -25,7 +25,7 @@ import lombok.ToString;
 public class AnimeStudioModel {
     
     public AnimeStudioModel(DTOAnimeStudioModel animeStudio) {
-        this(null, animeStudio.animeStudioName(), animeStudio.animeStudioImg());
+        this(animeStudio.animeStudioId() != null ? animeStudio.animeStudioId() : null, animeStudio.animeStudioName(), animeStudio.animeStudioImg());
     }
 
     @Id

@@ -39,7 +39,7 @@ public class AnimeController {
     private FinalAnimeService finalAnimeService;
     
     /* Return 204 no content, set this default */
-    @PostMapping("/anime")
+    @PostMapping
     @Transactional
     public ResponseEntity<?> postAnime(@RequestBody @Valid DTOAnimeModel anime) {
         try {
@@ -55,7 +55,7 @@ public class AnimeController {
             Page<AnimeModel> animes = animeService.getAnimeList(pageable);
             
             if (animes.isEmpty()) {
-                return new ResponseEntity<>("Nenhum anime encontrado!", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             
             return new ResponseEntity<Page<AnimeModel>>(animes, HttpStatus.OK);

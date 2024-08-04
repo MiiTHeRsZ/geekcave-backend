@@ -25,9 +25,9 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(of = "animeCharacterId")
 public class AnimeCharacterModel {
-    
+
     public AnimeCharacterModel(DTOAnimeCharacterModel animeCharacter) {
-        this(null, animeCharacter.anime(), animeCharacter.animeCharacterName(), animeCharacter.animeCharacterImg());
+        this(null, new AnimeModel(animeCharacter.anime()), animeCharacter.animeCharacterName(), animeCharacter.animeCharacterImg());
     }
 
     @Id

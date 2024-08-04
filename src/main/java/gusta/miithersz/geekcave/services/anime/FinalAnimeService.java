@@ -38,6 +38,10 @@ public class FinalAnimeService {
         try {
             AnimeModel animeModel = animeRepository.findAnimeByAnimeId(id);
 
+            if (animeModel == null) {
+                return null;
+            }
+
             List<AnimeXAnimeGenreModel> animeXAnimeGenreModels = animeXAnimeGenreRepository.findAllByAnime_AnimeId(id);
             List<AnimeGenreModel> animeGenreModels = new ArrayList<>();
             animeXAnimeGenreModels.forEach((axag) -> animeGenreModels.add(axag.getAnimeGenre()));

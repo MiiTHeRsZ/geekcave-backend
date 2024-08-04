@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ import gusta.miithersz.geekcave.services.anime.AnimeCharacterService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/anime/character")
+@RequestMapping("/animes/character")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeCharacterController {
 
@@ -30,10 +31,9 @@ public class AnimeCharacterController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> postAnimeCharacter(DTOAnimeCharacterModel character) {
+    public ResponseEntity<?> postAnimeCharacter(@RequestBody DTOAnimeCharacterModel character) {
         try {
-            return new ResponseEntity<>(
-                    animeCharacterService.postAnimeCharacter(new AnimeCharacterModel(character)),
+            return new ResponseEntity<>(animeCharacterService.postAnimeCharacter(new AnimeCharacterModel(character)),
                     HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

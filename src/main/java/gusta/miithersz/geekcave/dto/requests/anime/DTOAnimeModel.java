@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record DTOAnimeModel(
+        Long animeId,
         @NotNull(message = "Must not be null!") Boolean animePin,
         @NotNull(message = "Must not be null!") @Valid DTOAnimeTitleModel animeTitle,
         @NotBlank @Size(max = 5, message = "Must be up to 5 characters!") String animeTier,

@@ -1,9 +1,8 @@
 package gusta.miithersz.geekcave.services.anime;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import gusta.miithersz.geekcave.models.anime.AnimeStudioModel;
@@ -19,13 +18,9 @@ public class AnimeStudioService {
         return animeStudioRepository.save(animeStudio);
     }
     
-    public List<AnimeStudioModel> getAnimeStudioList() {
-        List<AnimeStudioModel> animeStudioList = new ArrayList<>();
-
+    public Page<AnimeStudioModel> getAnimeStudioList(Pageable pageable) {
         try {
-            animeStudioList = animeStudioRepository.findAll();
-
-            return animeStudioList;
+            return animeStudioRepository.findAll(pageable);
         } catch (Exception e) {
             throw e;
         }
