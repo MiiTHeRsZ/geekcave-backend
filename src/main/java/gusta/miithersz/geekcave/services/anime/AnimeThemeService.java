@@ -16,13 +16,13 @@ public class AnimeThemeService {
         return animeThemeRepository.save(theme);
     }
 
-    public AnimeThemeModel putAnimeTheme(Long id, AnimeThemeModel animeThemeModel) {
+    public AnimeThemeModel putAnimeThemeById(Long id, AnimeThemeModel animeThemeModel) {
         animeThemeModel.setAnimeThemeId(id);
 
         return animeThemeRepository.save(animeThemeModel);
     }
 
-    public void deleteAnimeTheme(Long id) {
+    public void deleteAnimeThemeById(Long id) {
         animeThemeRepository.deleteById(id);
     }
 }

@@ -26,8 +26,12 @@ public class AnimeXAnimeGenreService {
         return animeXAnimeGenreRepository.findAllByGenre(genre, pageable);
     }
 
-    public void deleteAnimeXAnimeGenre(Long id) {
+    public void deleteAnimeXAnimeGenreById(Long id) {
         animeXAnimeGenreRepository.deleteById(id);
+    }
+
+    public void deleteAnimeXAnimeGenreByAnimeId(Long id) {
+        animeXAnimeGenreRepository.deleteAllByAnime_AnimeId(id);
     }
     
 }

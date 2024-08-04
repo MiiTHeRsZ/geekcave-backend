@@ -15,7 +15,7 @@ import gusta.miithersz.geekcave.auth.user.UserModel;
 import gusta.miithersz.geekcave.security.TokenAuthService;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class AuthController {
     
     @Autowired

@@ -24,7 +24,7 @@ public class AnimeTitleService {
         return animeTitleRepository.findAllByAnimeTitleName(name, pageable);
     }
 
-    public AnimeTitleModel putAnimeTitle(Long id, AnimeTitleModel animeTitle) {
+    public AnimeTitleModel putAnimeTitleById(Long id, AnimeTitleModel animeTitle) {
         animeTitle.setAnimeTitleId(id);
 
         return animeTitleRepository.save(animeTitle);

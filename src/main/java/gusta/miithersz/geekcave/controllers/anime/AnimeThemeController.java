@@ -38,9 +38,9 @@ public class AnimeThemeController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeTheme(@PathVariable Long id, @RequestBody DTOAnimeThemeModel theme) {
+    public ResponseEntity<?> putAnimeThemeById(@PathVariable Long id, @RequestBody DTOAnimeThemeModel theme) {
         try {
-            return new ResponseEntity<AnimeThemeModel>(animeThemeService.putAnimeTheme(id, new AnimeThemeModel(theme)),
+            return new ResponseEntity<AnimeThemeModel>(animeThemeService.putAnimeThemeById(id, new AnimeThemeModel(theme)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -49,9 +49,9 @@ public class AnimeThemeController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteAnimeTheme(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAnimeThemeById(@PathVariable Long id) {
         try {
-            animeThemeService.deleteAnimeTheme(id);
+            animeThemeService.deleteAnimeThemeById(id);
 
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {

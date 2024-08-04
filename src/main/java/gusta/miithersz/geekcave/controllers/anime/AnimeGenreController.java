@@ -1,8 +1,8 @@
 package gusta.miithersz.geekcave.controllers.anime;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +31,7 @@ public class AnimeGenreController {
     @Transactional
     public ResponseEntity<?> postAnimeGenre(DTOAnimeGenreModel genre) {
         try {
-            return new ResponseEntity<>(animeGenreService.postAnimeGenre(new AnimeGenreModel(genre)),
+            return new ResponseEntity<AnimeGenreModel>(animeGenreService.postAnimeGenre(new AnimeGenreModel(genre)),
                     HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -39,15 +39,15 @@ public class AnimeGenreController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAnimeGenre() {
+    public ResponseEntity<?> getAnimeGenreList(Pageable pageable) {
         try {
-            List<AnimeGenreModel> animeGenres = animeGenreService.getAnimeGenreList();
+            Page<AnimeGenreModel> animeGenres = animeGenreService.getAnimeGenreList(pageable);
 
             if (animeGenres.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
-            return new ResponseEntity<List<AnimeGenreModel>>(animeGenres, HttpStatus.OK);
+            return new ResponseEntity<Page<AnimeGenreModel>>(animeGenres, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -56,9 +56,9 @@ public class AnimeGenreController {
     // ! Maybe patch ?
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeGenre(@PathVariable("id") Long id, DTOAnimeGenreModel genre) {
+    public ResponseEntity<?> putAnimeGenreById(@PathVariable Long id, DTOAnimeGenreModel genre) {
         try {
-            return new ResponseEntity<>(animeGenreService.putAnimeGenre(id, new AnimeGenreModel(genre)),
+            return new ResponseEntity<AnimeGenreModel>(animeGenreService.putAnimeGenreById(id, new AnimeGenreModel(genre)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -67,9 +67,9 @@ public class AnimeGenreController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteAnimeGenre(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteAnimeGenreById(@PathVariable Long id) {
         try {
-            animeGenreService.deleteAnimeGenre(id);
+            animeGenreService.deleteAnimeGenreById(id);
 
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {

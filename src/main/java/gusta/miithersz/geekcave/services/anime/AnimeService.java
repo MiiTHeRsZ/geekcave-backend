@@ -18,6 +18,9 @@ public class AnimeService {
     @Autowired
     private AnimeTitleService animeTitleService;
 
+    @Autowired
+    private AnimeXAnimeGenreService animeXAnimeGenreService;
+
     public Page<AnimeModel> getAnimeList(Pageable pageable) {
         try {
             return animeRepository.findAll(pageable);
@@ -38,13 +41,15 @@ public class AnimeService {
         return animeRepository.save(anime);
     }
 
-    public AnimeModel putAnime(Long id, AnimeModel anime) {
+    public AnimeModel putAnimeById(Long id, AnimeModel anime) {
         anime.setAnimeId(id);
 
         return animeRepository.save(anime);
     }
 
-    public void deleteAnime(Long id) {
+    public void deleteAnimeById(Long id) {
+        animeXAnimeGenreService.deleteAnimeXAnimeGenreByAnimeId(id);
+
         animeRepository.deleteById(id);
     }
 

@@ -14,25 +14,25 @@ public class AnimeCharacterService {
     @Autowired
     private AnimeCharacterRepository animeCharacterRepository;
 
-    public Page<AnimeCharacterModel> getAnimeCharacterList(Pageable pageable) {
-        return animeCharacterRepository.findAll(pageable);
-    }
-
-    public AnimeCharacterModel getAnimeCharacter(Long id) {
-        return animeCharacterRepository.findAnimeCharacterByAnimeCharacterId(id);
-    }
-
     public AnimeCharacterModel postAnimeCharacter(AnimeCharacterModel animeCharacter) {
         return animeCharacterRepository.save(animeCharacter);
     }
 
-    public AnimeCharacterModel putAnimeCharacter(Long id, AnimeCharacterModel animeCharacter) {
+    public Page<AnimeCharacterModel> getAnimeCharacterList(Pageable pageable) {
+        return animeCharacterRepository.findAll(pageable);
+    }
+
+    public AnimeCharacterModel getAnimeCharacterById(Long id) {
+        return animeCharacterRepository.findAnimeCharacterByAnimeCharacterId(id);
+    }
+
+    public AnimeCharacterModel putAnimeCharacterById(Long id, AnimeCharacterModel animeCharacter) {
         animeCharacter.setAnimeCharacterId(id);
 
         return animeCharacterRepository.save(animeCharacter);
     }
 
-    public void deleteAnimeCharacter(Long id) {
+    public void deleteAnimeCharacterById(Long id) {
         animeCharacterRepository.deleteById(id);
     }
 

@@ -27,7 +27,7 @@ import lombok.ToString;
 public class AnimeThemeModel {
 
     public AnimeThemeModel(DTOAnimeThemeModel theme) {
-        this(null, new AnimeModel(theme.anime()), theme.animeThemeSong(), theme.animeThemeType());
+        this(null, new AnimeModel(theme.anime()), theme.animeThemeName(), theme.animeThemeSong(), theme.animeThemeSongFull(), theme.animeThemeType());
     }
 
     @Id
@@ -39,8 +39,14 @@ public class AnimeThemeModel {
     @JoinColumn(name = "fk_anime_id", referencedColumnName = "anime_id")
     private AnimeModel anime;
 
+    @Column(name = "anime_theme_name")
+    private String animeThemeName;
+
     @Column(name = "anime_theme_song")
     private String animeThemeSong;
+
+    @Column(name = "anime_theme_song_full")
+    private String animeThemeSongFull;
 
     // ! Maybe ENUM ?
     @Column(name = "anime_theme_type")

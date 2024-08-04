@@ -58,7 +58,7 @@ public class AnimeCharacterController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getAnimeCharacterById(@PathVariable Long id) {
         try {
-            return new ResponseEntity<>(animeCharacterService.getAnimeCharacter(id), HttpStatus.OK);
+            return new ResponseEntity<>(animeCharacterService.getAnimeCharacterById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -66,10 +66,10 @@ public class AnimeCharacterController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeCharacter(@PathVariable Long id, DTOAnimeCharacterModel character) {
+    public ResponseEntity<?> putAnimeCharacterById(@PathVariable Long id, DTOAnimeCharacterModel character) {
         try {
             return new ResponseEntity<>(
-                    animeCharacterService.putAnimeCharacter(id, new AnimeCharacterModel(character)),
+                    animeCharacterService.putAnimeCharacterById(id, new AnimeCharacterModel(character)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -78,9 +78,9 @@ public class AnimeCharacterController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteAnimeCharacter(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAnimeCharacterById(@PathVariable Long id) {
         try {
-            animeCharacterService.deleteAnimeCharacter(id);
+            animeCharacterService.deleteAnimeCharacterById(id);
 
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

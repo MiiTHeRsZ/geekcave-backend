@@ -15,6 +15,10 @@ public class AnimeStudioService {
     @Autowired
     private AnimeStudioRepository animeStudioRepository;
 
+    public AnimeStudioModel postAnimeStudio(AnimeStudioModel animeStudio) {
+        return animeStudioRepository.save(animeStudio);
+    }
+    
     public List<AnimeStudioModel> getAnimeStudioList() {
         List<AnimeStudioModel> animeStudioList = new ArrayList<>();
 
@@ -35,17 +39,13 @@ public class AnimeStudioService {
         }
     }
 
-    public AnimeStudioModel postAnimeStudio(AnimeStudioModel animeStudio) {
-        return animeStudioRepository.save(animeStudio);
-    }
-
-    public AnimeStudioModel putAnimeStudio(Long id, AnimeStudioModel animeStudioModel) {
+    public AnimeStudioModel putAnimeStudioById(Long id, AnimeStudioModel animeStudioModel) {
         animeStudioModel.setAnimeStudioId(id);
 
         return animeStudioRepository.save(animeStudioModel);
     }
 
-    public void deleteAnimeStudio(Long id) {
+    public void deleteAnimeStudioById(Long id) {
         animeStudioRepository.deleteById(id);
     }
 

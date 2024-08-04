@@ -64,9 +64,9 @@ public class AnimeXAnimeGenreController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteAnimeXAnimeGenre(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAnimeXAnimeGenreById(@PathVariable Long id) {
         try {
-            animeXAnimeGenreService.deleteAnimeXAnimeGenre(id);
+            animeXAnimeGenreService.deleteAnimeXAnimeGenreById(id);
 
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {

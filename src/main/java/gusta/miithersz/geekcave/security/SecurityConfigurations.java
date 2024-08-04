@@ -27,8 +27,8 @@ public class SecurityConfigurations {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(ahr -> {
-                    ahr.requestMatchers(HttpMethod.POST, "auth").permitAll();
-                    ahr.requestMatchers("v3/api-docs/**", "swagger-ui.html", "swagger-ui/**").permitAll();
+                    ahr.requestMatchers(HttpMethod.POST, "/auth").permitAll();
+                    ahr.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
                     /* ahr.requestMatchers(HttpMethod.DELETE, "anime").hasRole("ADMIN"); */
                     ahr.anyRequest().authenticated();
                 })

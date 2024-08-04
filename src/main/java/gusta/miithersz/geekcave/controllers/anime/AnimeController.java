@@ -92,9 +92,9 @@ public class AnimeController {
     
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnime(@PathVariable Long id, @RequestBody @Valid DTOAnimeModel anime) {
+    public ResponseEntity<?> putAnimeById(@PathVariable Long id, @RequestBody @Valid DTOAnimeModel anime) {
         try {
-            return new ResponseEntity<AnimeModel>(animeService.putAnime(id, new AnimeModel(anime)), HttpStatus.OK);
+            return new ResponseEntity<AnimeModel>(animeService.putAnimeById(id, new AnimeModel(anime)), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -103,9 +103,9 @@ public class AnimeController {
     @DeleteMapping("/{id}")
     @Transactional
     /* @Secured("ROLE_ADMIN") */
-    public ResponseEntity<?> deleteAnime(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAnimeById(@PathVariable Long id) {
         try {
-            animeService.deleteAnime(id);
+            animeService.deleteAnimeById(id);
             
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {

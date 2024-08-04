@@ -40,7 +40,9 @@ DROP TABLE IF EXISTS ANIME_THEME;
 CREATE TABLE ANIME_THEME (
 	anime_theme_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     fk_anime_id BIGINT NOT NULL,
-    anime_theme_song VARCHAR(100) NOT NULL,
+    anime_theme_name VARCHAR(100) NOT NULL,
+    anime_theme_song VARCHAR(100),
+    anime_theme_song_full VARCHAR(100),
     anime_theme_type CHAR(2) NOT NULL,
     
     FOREIGN KEY (fk_anime_id) REFERENCES ANIME(anime_id)

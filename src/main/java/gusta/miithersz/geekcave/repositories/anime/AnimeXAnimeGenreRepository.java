@@ -23,4 +23,6 @@ public interface AnimeXAnimeGenreRepository extends JpaRepository<AnimeXAnimeGen
     @Query(value = "SELECT * FROM anime_x_anime_genre AS axag WHERE axag??", nativeQuery = true)
 	Page<AnimeXAnimeGenreModel> findAllByGenre(String genre, Pageable pageable);
 
+    void deleteAllByAnime_AnimeId(Long id);
+
 }

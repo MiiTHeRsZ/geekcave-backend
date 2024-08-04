@@ -68,10 +68,10 @@ public class AnimeStudioController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeStudio(@PathVariable Long id, @RequestBody DTOAnimeStudioModel animeStudio) {
+    public ResponseEntity<?> putAnimeStudioById(@PathVariable Long id, @RequestBody DTOAnimeStudioModel animeStudio) {
         try {
             return new ResponseEntity<AnimeStudioModel>(
-                    animeStudioService.putAnimeStudio(id, new AnimeStudioModel(animeStudio)), HttpStatus.OK);
+                    animeStudioService.putAnimeStudioById(id, new AnimeStudioModel(animeStudio)), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -79,9 +79,9 @@ public class AnimeStudioController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteAnimeStudio(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAnimeStudioById(@PathVariable Long id) {
         try {
-            animeStudioService.deleteAnimeStudio(id);
+            animeStudioService.deleteAnimeStudioById(id);
 
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

@@ -39,10 +39,10 @@ public class AnimeTitleController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putAnimeTitle(@PathVariable Long id, @RequestBody DTOAnimeTitleModel animeTitle) {
+    public ResponseEntity<?> putAnimeTitleById(@PathVariable Long id, @RequestBody DTOAnimeTitleModel animeTitle) {
         try {
             return new ResponseEntity<AnimeTitleModel>(
-                    animeTitleService.putAnimeTitle(id, new AnimeTitleModel(animeTitle)), HttpStatus.OK);
+                    animeTitleService.putAnimeTitleById(id, new AnimeTitleModel(animeTitle)), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

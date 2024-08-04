@@ -1,8 +1,8 @@
 package gusta.miithersz.geekcave.services.anime;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import gusta.miithersz.geekcave.models.anime.AnimeGenreModel;
@@ -14,9 +14,13 @@ public class AnimeGenreService {
     @Autowired
     private AnimeGenreRepository animeGenreRepository;
 
-    public List<AnimeGenreModel> getAnimeGenreList() {
+    public AnimeGenreModel postAnimeGenre(AnimeGenreModel animeGenre) {
+        return animeGenreRepository.save(animeGenre);
+    }
+
+    public Page<AnimeGenreModel> getAnimeGenreList(Pageable pageable) {
         try {
-            return animeGenreRepository.findAll();
+            return animeGenreRepository.findAll(pageable);
         } catch (Exception e) {
             throw e;
         }
@@ -26,17 +30,13 @@ public class AnimeGenreService {
         return animeGenreRepository.findAnimeGenreByAnimeGenreId(id);
     }
 
-    public AnimeGenreModel postAnimeGenre(AnimeGenreModel animeGenre) {
-        return animeGenreRepository.save(animeGenre);
-    }
-
-    public AnimeGenreModel putAnimeGenre(Long id, AnimeGenreModel animeGenre) {
+    public AnimeGenreModel putAnimeGenreById(Long id, AnimeGenreModel animeGenre) {
         animeGenre.setAnimeGenreId(id);
 
         return animeGenreRepository.save(animeGenre);
     }
 
-    public void deleteAnimeGenre(Long id) {
+    public void deleteAnimeGenreById(Long id) {
         animeGenreRepository.deleteById(id);
     }
 
