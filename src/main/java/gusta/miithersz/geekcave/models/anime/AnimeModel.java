@@ -1,5 +1,6 @@
 package gusta.miithersz.geekcave.models.anime;
 
+import gusta.miithersz.geekcave.dto.requests.anime.DTOAnimeModel;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

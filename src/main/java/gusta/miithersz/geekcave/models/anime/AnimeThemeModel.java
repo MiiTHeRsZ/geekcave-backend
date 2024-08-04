@@ -1,5 +1,6 @@
 package gusta.miithersz.geekcave.models.anime;
 
+import gusta.miithersz.geekcave.dto.requests.anime.DTOAnimeThemeModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package gusta.miithersz.geekcave.models.anime;
+package gusta.miithersz.geekcave.dto.requests.anime;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

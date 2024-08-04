@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import gusta.miithersz.geekcave.dto.requests.anime.DTOAnimeModel;
+import gusta.miithersz.geekcave.dto.responses.anime.FinalDTOAnime;
 import gusta.miithersz.geekcave.models.anime.AnimeModel;
-import gusta.miithersz.geekcave.models.anime.DTOAnimeModel;
-import gusta.miithersz.geekcave.models.anime.FinalDTOAnime;
 import gusta.miithersz.geekcave.services.anime.AnimeService;
 import gusta.miithersz.geekcave.services.anime.FinalAnimeService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import gusta.miithersz.geekcave.dto.requests.anime.DTOAnimeGenreModel;
 import gusta.miithersz.geekcave.models.anime.AnimeGenreModel;
-import gusta.miithersz.geekcave.models.anime.DTOAnimeGenreModel;
 import gusta.miithersz.geekcave.services.anime.AnimeGenreService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
