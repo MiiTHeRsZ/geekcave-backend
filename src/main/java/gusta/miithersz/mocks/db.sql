@@ -9,27 +9,20 @@ CREATE TABLE MANGA_TITLE (
     manga_title_synonyms VARCHAR(100)
 );
 
-DROP TABLE IF EXISTS MANGA_TYPE;
-CREATE TABLE MANGA_TYPE (
-	manga_type_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    manga_type_name VARCHAR(15) NOT NULL
-);
-
 DROP TABLE IF EXISTS MANGA;
 CREATE TABLE MANGA (
 	manga_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     manga_pin BOOLEAN NOT NULL,
     fk_manga_title_id BIGINT NOT NULL,
     manga_tier CHAR(5),
-    fk_manga_type_id BIGINT NOT NULL,
+    manga_type VARCHAR(25) NOT NULL,
     manga_chapters INT NOT NULL,
     manga_status VARCHAR(25) NOT NULL,
     manga_author VARCHAR(100) NOT NULL,
     manga_artist VARCHAR(100) NOT NULL,
     manga_synopsis VARCHAR(500) NOT NULL,
 
-    FOREIGN KEY (fk_manga_title_id) REFERENCES MANGA_TITLE(manga_title_id),
-    FOREIGN KEY (fk_manga_type_id) REFERENCES MANGA_TYPE(manga_type_id)
+    FOREIGN KEY (fk_manga_title_id) REFERENCES MANGA_TITLE(manga_title_id)
 );
 
 DROP TABLE IF EXISTS MANGA_CHARACTER;
@@ -38,6 +31,16 @@ CREATE TABLE MANGA_CHARACTER (
     fk_manga_id BIGINT NOT NULL,
     manga_character_name VARCHAR(50) NOT NULL,
     manga_character_img VARCHAR(100) NOT NULL,
+
+    FOREIGN KEY (fk_manga_id) REFERENCES MANGA(manga_id)
+);
+
+DROP TABLE IF EXISTS MANGA_COVER;
+CREATE TABLE MANGA_COVER (
+    manga_cover_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    fk_manga_id BIGINT NOT NULL,
+    manga_cover_vol TINYINT NOT NULL,
+    manga_cover_img VARCHAR(100) NOT NULL,
 
     FOREIGN KEY (fk_manga_id) REFERENCES MANGA(manga_id)
 );
