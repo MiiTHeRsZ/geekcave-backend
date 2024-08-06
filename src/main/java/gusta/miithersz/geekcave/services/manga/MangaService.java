@@ -14,7 +14,7 @@ public class MangaService {
     @Autowired
     private MangaRepository mangaRepository;
 
-    public MangaModel postAnime(MangaModel manga) {
+    public MangaModel postManga(MangaModel manga) {
         return mangaRepository.save(manga);
     }
 

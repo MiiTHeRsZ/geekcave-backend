@@ -1,7 +1,10 @@
 package gusta.miithersz.geekcave.models.manga;
 
 import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaModel;
+import gusta.miithersz.geekcave.utils.enumerated.manga.MangaType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -37,8 +40,8 @@ public class MangaModel {
 
     private MangaTitleModel mangaTitle;
 
-    // ! Enum
-    private String mangaType;
+    @Enumerated(EnumType.STRING)
+    private MangaType mangaType;
 
     private Integer mangaChapters;
 

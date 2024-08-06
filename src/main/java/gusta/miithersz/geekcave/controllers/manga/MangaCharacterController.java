@@ -3,6 +3,7 @@ package gusta.miithersz.geekcave.controllers.manga;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,48 +16,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaModel;
-import gusta.miithersz.geekcave.models.manga.MangaModel;
-import gusta.miithersz.geekcave.services.manga.MangaService;
+import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaCharacterModel;
+import gusta.miithersz.geekcave.models.manga.MangaCharacterModel;
+import gusta.miithersz.geekcave.services.manga.MangaCharacterService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/manga")
+@RequestMapping("/manga/character")
 @SecurityRequirement(name = "bearer-key")
-public class MangaController {
+public class MangaCharacterController {
 
     @Autowired
-    private MangaService mangaService;
+    private MangaCharacterService mangaCharacterService;
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> postManga(@RequestBody DTOMangaModel manga) {
+    public ResponseEntity<?> postMangaCharacter(@RequestBody DTOMangaCharacterModel character) {
         try {
-            return new ResponseEntity<MangaModel>(mangaService.postManga(new MangaModel(manga)), HttpStatus.CREATED);
+            return new ResponseEntity<>(mangaCharacterService.postMangaCharacter(new MangaCharacterModel(character)),
+                    HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getMangaList(Pageable pageable) {
+    public ResponseEntity<?> getMangaCharacterList(@PageableDefault(size = 10) Pageable pageable) {
         try {
-            Page<MangaModel> mangas = mangaService.getMangaList(pageable);
+            Page<MangaCharacterModel> characters = mangaCharacterService.getMangaCharacterList(pageable);
 
-            if (mangas.isEmpty()) {
+            if (characters.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
-            return new ResponseEntity<Page<MangaModel>>(mangas, HttpStatus.OK);
+            return new ResponseEntity<Page<MangaCharacterModel>>(characters, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMangaById(@PathVariable Long id) {
+    public ResponseEntity<?> getMangaCharacterById(@PathVariable Long id) {
         try {
-            return new ResponseEntity<MangaModel>(mangaService.getMangaById(id), HttpStatus.OK);
+            return new ResponseEntity<>(mangaCharacterService.getMangaCharacterById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -64,9 +66,11 @@ public class MangaController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putMangaById(@PathVariable Long id, @RequestBody DTOMangaModel manga) {
+    public ResponseEntity<?> putMangaCharacterById(@PathVariable Long id, DTOMangaCharacterModel character) {
         try {
-            return new ResponseEntity<MangaModel>(mangaService.putMangaById(id, new MangaModel(manga)), HttpStatus.OK);
+            return new ResponseEntity<>(
+                    mangaCharacterService.putMangaCharacterById(id, new MangaCharacterModel(character)),
+                    HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -74,11 +78,11 @@ public class MangaController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteMangaById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteMangaCharacterById(@PathVariable Long id) {
         try {
-            mangaService.deleteMangaById(id);
+            mangaCharacterService.deleteMangaCharacterById(id);
 
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

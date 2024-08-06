@@ -11,52 +11,43 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaModel;
-import gusta.miithersz.geekcave.models.manga.MangaModel;
-import gusta.miithersz.geekcave.services.manga.MangaService;
+import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaCoverModel;
+import gusta.miithersz.geekcave.models.manga.MangaCoverModel;
+import gusta.miithersz.geekcave.services.manga.MangaCoverService;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/manga")
+@RequestMapping("/manga/cover")
 @SecurityRequirement(name = "bearer-key")
-public class MangaController {
+public class MangaCoverController {
 
     @Autowired
-    private MangaService mangaService;
+    private MangaCoverService mangaCoverService;
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> postManga(@RequestBody DTOMangaModel manga) {
+    public ResponseEntity<?> postMangaCover(@RequestBody DTOMangaCoverModel cover) {
         try {
-            return new ResponseEntity<MangaModel>(mangaService.postManga(new MangaModel(manga)), HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping("/all")
-    public ResponseEntity<?> getMangaList(Pageable pageable) {
-        try {
-            Page<MangaModel> mangas = mangaService.getMangaList(pageable);
-
-            if (mangas.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-
-            return new ResponseEntity<Page<MangaModel>>(mangas, HttpStatus.OK);
+            return new ResponseEntity<MangaCoverModel>(mangaCoverService.postMangaCover(new MangaCoverModel(cover)), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMangaById(@PathVariable Long id) {
+    public ResponseEntity<?> getMangaCoverByMangaId(@PathVariable Long id, Pageable pageable) {
         try {
-            return new ResponseEntity<MangaModel>(mangaService.getMangaById(id), HttpStatus.OK);
+            Page<MangaCoverModel> covers = mangaCoverService.getMangaCoverListByMangaId(id);
+
+            if (covers.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            return new ResponseEntity<Page<MangaCoverModel>>(covers, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -64,9 +55,9 @@ public class MangaController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> putMangaById(@PathVariable Long id, @RequestBody DTOMangaModel manga) {
+    public ResponseEntity<?> putMangaCoverById(@PathVariable Long id, @RequestBody DTOMangaCoverModel cover) {
         try {
-            return new ResponseEntity<MangaModel>(mangaService.putMangaById(id, new MangaModel(manga)), HttpStatus.OK);
+            return new ResponseEntity<MangaCoverModel>(mangaCoverService.putMangaCoverById(id, new MangaCoverModel(cover)), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -74,11 +65,11 @@ public class MangaController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteMangaById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteMangaCoverById(@PathVariable Long id) {
         try {
-            mangaService.deleteMangaById(id);
+            mangaCoverService.deleteMangaCoverById(id);
 
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
