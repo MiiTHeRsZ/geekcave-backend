@@ -62,6 +62,7 @@ public class AnimeModel {
     @Column(name = "anime_img")
     private String animeImg;
 
+    // ! Differents temps may have many studios | @ManyToOne(mappedBy = "anime")
     @OneToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
     @JoinColumn(name = "fk_anime_studio_id", referencedColumnName = "anime_studio_id")
     private AnimeStudioModel animeStudio;

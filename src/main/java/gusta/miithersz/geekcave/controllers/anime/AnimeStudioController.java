@@ -21,7 +21,7 @@ import gusta.miithersz.geekcave.services.anime.AnimeStudioService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/animes/studio")
+@RequestMapping("/anime/studio")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeStudioController {
 

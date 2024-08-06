@@ -18,7 +18,7 @@ import gusta.miithersz.geekcave.services.anime.AnimeThemeService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/animes/theme")
+@RequestMapping("/anime/theme")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeThemeController {
 

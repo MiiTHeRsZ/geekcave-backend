@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/animes")
+@RequestMapping("/anime")
 /* @EnableMethodSecurity(securedEnabled = true) */
 @SecurityRequirement(name = "bearer-key")
 public class AnimeController {

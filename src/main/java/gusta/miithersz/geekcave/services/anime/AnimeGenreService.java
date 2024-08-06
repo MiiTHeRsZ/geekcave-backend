@@ -27,7 +27,7 @@ public class AnimeGenreService {
     }
 
     public AnimeGenreModel getAnimeGenreById(Long id) {
-        return animeGenreRepository.findAnimeGenreByAnimeGenreId(id);
+        return animeGenreRepository.findByAnimeGenreId(id);
     }
 
     public AnimeGenreModel putAnimeGenreById(Long id, AnimeGenreModel animeGenre) {

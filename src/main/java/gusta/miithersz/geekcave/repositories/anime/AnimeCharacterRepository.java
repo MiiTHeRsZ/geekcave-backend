@@ -12,6 +12,6 @@ public interface AnimeCharacterRepository extends JpaRepository<AnimeCharacterMo
 
     List<AnimeCharacterModel> findAllByAnime_AnimeId(Long id);
 
-    AnimeCharacterModel findAnimeCharacterByAnimeCharacterId(Long id);
+    AnimeCharacterModel findByAnimeCharacterId(Long id);
 
 }

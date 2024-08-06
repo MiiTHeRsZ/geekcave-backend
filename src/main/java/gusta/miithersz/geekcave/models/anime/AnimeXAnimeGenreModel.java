@@ -35,6 +35,7 @@ public class AnimeXAnimeGenreModel {
     @Column(name = "anime_x_anime_genre_id")
     private Long animeXAnimeGenreId;
 
+    // ? maybe this should change
     @OneToOne
     @JoinColumn(name = "fk_anime_id", referencedColumnName = "anime_id")
     private AnimeModel anime;

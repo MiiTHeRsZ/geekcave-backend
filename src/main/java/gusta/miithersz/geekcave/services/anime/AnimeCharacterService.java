@@ -23,7 +23,7 @@ public class AnimeCharacterService {
     }
 
     public AnimeCharacterModel getAnimeCharacterById(Long id) {
-        return animeCharacterRepository.findAnimeCharacterByAnimeCharacterId(id);
+        return animeCharacterRepository.findByAnimeCharacterId(id);
     }
 
     public AnimeCharacterModel putAnimeCharacterById(Long id, AnimeCharacterModel animeCharacter) {

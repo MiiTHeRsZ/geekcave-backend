@@ -20,7 +20,7 @@ import gusta.miithersz.geekcave.services.anime.AnimeTitleService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/animes/title")
+@RequestMapping("/anime/title")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeTitleController {
 

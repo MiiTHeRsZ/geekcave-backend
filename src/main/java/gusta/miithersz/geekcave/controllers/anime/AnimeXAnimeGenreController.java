@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/animes/animexanimegenre")
+@RequestMapping("/anime/animexanimegenre")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeXAnimeGenreController {
 

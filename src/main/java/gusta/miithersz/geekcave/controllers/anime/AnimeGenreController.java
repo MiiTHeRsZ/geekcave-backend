@@ -21,7 +21,7 @@ import gusta.miithersz.geekcave.services.anime.AnimeGenreService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/animes/genre")
+@RequestMapping("/anime/genre")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeGenreController {
 

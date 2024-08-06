@@ -22,7 +22,7 @@ import gusta.miithersz.geekcave.services.anime.AnimeCharacterService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
-@RequestMapping("/animes/character")
+@RequestMapping("/anime/character")
 @SecurityRequirement(name = "bearer-key")
 public class AnimeCharacterController {
 
