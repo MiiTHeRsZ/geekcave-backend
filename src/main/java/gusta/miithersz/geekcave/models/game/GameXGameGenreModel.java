@@ -12,6 +12,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class GameXGameGenreModel {
+
+    private Long gameXGameGenreId;
     
     private GameModel game;
 

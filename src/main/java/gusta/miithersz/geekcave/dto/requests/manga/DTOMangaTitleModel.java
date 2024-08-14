@@ -5,6 +5,7 @@ public record DTOMangaTitleModel(
         String mangaTitleDefault,
         String mangaTitleEnglish,
         String mangaTitleJapanese,
+        String mangaTitleKorean,
         String mangaTitleSynonyms) {
 
 }

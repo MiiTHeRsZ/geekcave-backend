@@ -13,6 +13,8 @@ import lombok.ToString;
 @ToString
 public class GameXGameTagModel {
     
+    private Long gameXGameTagId;
+
     private GameModel game;
 
     private GameTagModel gameTag;
