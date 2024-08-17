@@ -30,7 +30,7 @@ import lombok.ToString;
 public class AnimeModel {
 
     public AnimeModel(@Valid DTOAnimeModel anime) {
-        this.animeId = anime.animeId() != null ? anime.animeId() : null;
+        this.animeId = anime.animeId();
         this.animePin = anime.animePin();
         this.animeTitle = new AnimeTitleModel(anime.animeTitle());
         this.animeTier = anime.animeTier();

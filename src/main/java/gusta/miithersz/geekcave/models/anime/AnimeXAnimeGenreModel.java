@@ -26,8 +26,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "animeXAnimeGenreId")
 public class AnimeXAnimeGenreModel {
 
-    public AnimeXAnimeGenreModel(DTOAnimeXAnimeGenreModel animeXAnimeGenre) {
-        this(null, new AnimeModel(animeXAnimeGenre.anime()), new AnimeGenreModel(animeXAnimeGenre.animeGenre()));
+    public AnimeXAnimeGenreModel(DTOAnimeXAnimeGenreModel animeXGenre) {
+        this(animeXGenre.animeXAnimeGenreId(), new AnimeModel(animeXGenre.anime()), new AnimeGenreModel(animeXGenre.animeGenre()));
     }
 
     @Id

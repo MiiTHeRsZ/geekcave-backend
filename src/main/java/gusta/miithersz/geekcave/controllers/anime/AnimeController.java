@@ -43,6 +43,7 @@ public class AnimeController {
     @Transactional
     public ResponseEntity<?> postAnime(@RequestBody @Valid DTOAnimeModel anime) {
         try {
+            System.out.println(anime);
             return new ResponseEntity<AnimeModel>(animeService.postAnime(new AnimeModel(anime)), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

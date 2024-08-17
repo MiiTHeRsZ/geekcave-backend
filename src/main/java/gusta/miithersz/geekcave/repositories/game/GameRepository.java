@@ -8,6 +8,6 @@ import gusta.miithersz.geekcave.models.game.GameModel;
 @Repository
 public interface GameRepository extends JpaRepository<GameModel, Long> {
 
-    GameModel findGameById(Long id);
-    
+    GameModel findGameByGameId(Long id);
+
 }

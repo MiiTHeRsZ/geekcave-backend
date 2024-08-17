@@ -23,7 +23,7 @@ public class GameService {
     }
 
     public GameModel getGameById(Long id) {
-        return gameRepository.findGameById(id);
+        return gameRepository.findGameByGameId(id);
     }
 
     public GameModel putGameById(Long id, GameModel game) {
@@ -35,5 +35,5 @@ public class GameService {
     public void deleteGameById(Long id) {
         gameRepository.deleteById(id);
     }
-    
+
 }

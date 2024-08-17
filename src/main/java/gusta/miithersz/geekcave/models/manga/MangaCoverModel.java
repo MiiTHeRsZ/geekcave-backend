@@ -1,7 +1,11 @@
 package gusta.miithersz.geekcave.models.manga;
 
 import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaCoverModel;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -23,12 +27,15 @@ import lombok.ToString;
 public class MangaCoverModel {
 
     public MangaCoverModel(DTOMangaCoverModel cover) {
-        this.mangaCoverId = cover.mangaCoverId() != null ? cover.mangaCoverId() : null;
+        this.mangaCoverId = cover.mangaCoverId();
         this.manga = new MangaModel(cover.manga());
         this.mangaCoverVol = cover.mangaCoverVol();
         this.mangaCoverImg = cover.mangaCoverImg();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "manga_cover_id")
     private Long mangaCoverId;
 
     @ManyToOne

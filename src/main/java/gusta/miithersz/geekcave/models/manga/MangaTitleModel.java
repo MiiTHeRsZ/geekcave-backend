@@ -1,7 +1,11 @@
 package gusta.miithersz.geekcave.models.manga;
 
 import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaTitleModel;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -20,15 +24,18 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "mangaTitleId")
 public class MangaTitleModel {
 
-    public MangaTitleModel(DTOMangaTitleModel mangaTitle) {
-        this.mangaTitleId = mangaTitle.mangaTitleId() != null ? mangaTitle.mangaTitleId() : null;
-        this.mangaTitleDefault = mangaTitle.mangaTitleDefault();
-        this.mangaTitleEnglish = mangaTitle.mangaTitleEnglish();
-        this.mangaTitleJapanese = mangaTitle.mangaTitleJapanese();
-        this.mangaTitleKorean = mangaTitle.mangaTitleKorean();
-        this.mangaTitleSynonyms = mangaTitle.mangaTitleSynonyms();
+    public MangaTitleModel(DTOMangaTitleModel title) {
+        this.mangaTitleId = title.mangaTitleId();
+        this.mangaTitleDefault = title.mangaTitleDefault();
+        this.mangaTitleEnglish = title.mangaTitleEnglish();
+        this.mangaTitleJapanese = title.mangaTitleJapanese();
+        this.mangaTitleKorean = title.mangaTitleKorean();
+        this.mangaTitleSynonyms = title.mangaTitleSynonyms();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "manga_title_id")
     private Long mangaTitleId;
 
     private String mangaTitleDefault;

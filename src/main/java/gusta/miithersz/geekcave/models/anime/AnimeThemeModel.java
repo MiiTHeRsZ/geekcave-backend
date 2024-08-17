@@ -27,7 +27,7 @@ import lombok.ToString;
 public class AnimeThemeModel {
 
     public AnimeThemeModel(DTOAnimeThemeModel theme) {
-        this(null, new AnimeModel(theme.anime()), theme.animeThemeName(), theme.animeThemeSong(), theme.animeThemeSongFull(), theme.animeThemeType());
+        this(theme.animeThemeId(), new AnimeModel(theme.anime()), theme.animeThemeName(), theme.animeThemeSong(), theme.animeThemeSongFull(), theme.animeThemeType());
     }
 
     @Id

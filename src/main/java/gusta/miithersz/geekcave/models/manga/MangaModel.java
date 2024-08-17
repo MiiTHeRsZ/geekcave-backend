@@ -2,9 +2,16 @@ package gusta.miithersz.geekcave.models.manga;
 
 import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaModel;
 import gusta.miithersz.geekcave.utils.enumerated.manga.MangaType;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,7 +31,7 @@ import lombok.ToString;
 public class MangaModel {
     
     public MangaModel(DTOMangaModel manga) {
-        this.mangaId = manga.mangaId() != null ? manga.mangaId() : null;
+        this.mangaId = manga.mangaId();
         this.mangaPin = manga.mangaPin();
         this.mangaTitle = new MangaTitleModel(manga.mangaTitle());
         this.mangaType = manga.mangaType();
@@ -34,10 +41,15 @@ public class MangaModel {
         this.mangaSynopsis = manga.mangaSynopsis();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "manga_id")
     private Long mangaId;
 
     private Boolean mangaPin;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_manga_title_id", referencedColumnName = "manga_title_id")
     private MangaTitleModel mangaTitle;
 
     @Enumerated(EnumType.STRING)

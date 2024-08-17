@@ -41,7 +41,7 @@ public class MangaCoverController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getMangaCoverByMangaId(@PathVariable Long id, Pageable pageable) {
         try {
-            Page<MangaCoverModel> covers = mangaCoverService.getMangaCoverListByMangaId(id);
+            Page<MangaCoverModel> covers = mangaCoverService.getMangaCoverListByMangaId(id, pageable);
 
             if (covers.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);

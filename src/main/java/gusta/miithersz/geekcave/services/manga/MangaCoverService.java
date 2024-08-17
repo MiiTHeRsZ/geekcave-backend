@@ -2,6 +2,7 @@ package gusta.miithersz.geekcave.services.manga;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import gusta.miithersz.geekcave.models.manga.MangaCoverModel;
@@ -17,8 +18,8 @@ public class MangaCoverService {
         return mangaCoverRepository.save(cover);
     }
 
-    public Page<MangaCoverModel> getMangaCoverListByMangaId(Long id) {
-        return mangaCoverRepository.findAllByManga_MangaId(id);
+    public Page<MangaCoverModel> getMangaCoverListByMangaId(Long id, Pageable pageable) {
+        return mangaCoverRepository.findAllByManga_MangaId(id, pageable);
     }
 
     public MangaCoverModel putMangaCoverById(Long id, MangaCoverModel cover) {

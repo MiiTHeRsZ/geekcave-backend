@@ -24,8 +24,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "animeStudioId")
 public class AnimeStudioModel {
     
-    public AnimeStudioModel(DTOAnimeStudioModel animeStudio) {
-        this(animeStudio.animeStudioId() != null ? animeStudio.animeStudioId() : null, animeStudio.animeStudioName(), animeStudio.animeStudioImg());
+    public AnimeStudioModel(DTOAnimeStudioModel studio) {
+        this(studio.animeStudioId(), studio.animeStudioName(), studio.animeStudioImg());
     }
 
     @Id
