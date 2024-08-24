@@ -11,20 +11,15 @@ import gusta.miithersz.geekcave.models.anime.AnimeCharacterModel;
 import gusta.miithersz.geekcave.models.anime.AnimeGenreModel;
 import gusta.miithersz.geekcave.models.anime.AnimeModel;
 import gusta.miithersz.geekcave.models.anime.AnimeThemeModel;
-import gusta.miithersz.geekcave.models.anime.AnimeXAnimeGenreModel;
 import gusta.miithersz.geekcave.repositories.anime.AnimeCharacterRepository;
 import gusta.miithersz.geekcave.repositories.anime.AnimeRepository;
 import gusta.miithersz.geekcave.repositories.anime.AnimeThemeRepository;
-import gusta.miithersz.geekcave.repositories.anime.AnimeXAnimeGenreRepository;
 
 @Service
 public class FinalAnimeService {
 
     @Autowired
     private AnimeRepository animeRepository;
-
-    @Autowired
-    private AnimeXAnimeGenreRepository animeXAnimeGenreRepository;
 
     @Autowired
     private AnimeCharacterRepository animeCharacterRepository;
@@ -42,9 +37,7 @@ public class FinalAnimeService {
                 return null;
             }
 
-            List<AnimeXAnimeGenreModel> animeXAnimeGenreModels = animeXAnimeGenreRepository.findAllByAnime_AnimeId(id);
             List<AnimeGenreModel> animeGenreModels = new ArrayList<>();
-            animeXAnimeGenreModels.forEach((axag) -> animeGenreModels.add(axag.getAnimeGenre()));
 
             List<AnimeCharacterModel> animeCharacterModels = animeCharacterRepository.findAllByAnime_AnimeId(id);
 
