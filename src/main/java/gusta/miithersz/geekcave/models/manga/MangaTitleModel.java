@@ -38,14 +38,19 @@ public class MangaTitleModel {
     @Column(name = "manga_title_id")
     private Long mangaTitleId;
 
+    @Column(name = "manga_title_default")
     private String mangaTitleDefault;
 
+    @Column(name = "manga_title_english")
     private String mangaTitleEnglish;
 
+    @Column(name = "manga_title_japanese")
     private String mangaTitleJapanese;
 
+    @Column(name = "manga_title_korean")
     private String mangaTitleKorean;
 
+    @Column(name = "manga_title_synonyms")
     private String mangaTitleSynonyms;
 
 }

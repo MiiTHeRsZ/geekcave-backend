@@ -8,15 +8,17 @@ import gusta.miithersz.geekcave.utils.enumerated.game.GameFeature;
 import gusta.miithersz.geekcave.utils.enumerated.game.GameGenre;
 
 public record DTOGameModel(
-        Long gameId,
-        Boolean gamePin,
-        String gameTitle,
-        String gameTier,
-        String gameImg,
-        DTOGameDeveloperModel gameDeveloper,
-        Date gameReleased,
-        Set<GameCharacterModel> gameCharacters,
-        Set<GameGenre> gameGenres,
-        Set<GameFeature> gameFeatures) {
+		Long gameId,
+		Boolean gamePin,
+		String gameTitle,
+		String gameTier,
+		String gameImg,
+		DTOGameDeveloperModel gameDeveloper,
+		Date gameReleased,
+		Long gamePrequel,
+		Long gameSequel,
+		Set<GameCharacterModel> gameCharacters,
+		Set<GameGenre> gameGenres,
+		Set<GameFeature> gameFeatures) {
 
 }

@@ -1,5 +1,7 @@
 package gusta.miithersz.geekcave.models.anime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import gusta.miithersz.geekcave.dto.requests.anime.DTOAnimeCharacterModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +29,8 @@ import lombok.ToString;
 public class AnimeCharacterModel {
 
     public AnimeCharacterModel(DTOAnimeCharacterModel character) {
-        this(character.animeCharacterId(), new AnimeModel(character.anime()), character.animeCharacterName(), character.animeCharacterImg());
+        this(character.animeCharacterId(), new AnimeModel(character.anime()), character.animeCharacterName(),
+                character.animeCharacterImg());
     }
 
     @Id
@@ -35,6 +38,16 @@ public class AnimeCharacterModel {
     @Column(name = "anime_character_id")
     private Long animeCharacterId;
 
+    @JsonIgnoreProperties({
+            "animePin",
+            "animeTier",
+            "animeStudio",
+            "animeSessions",
+            "animeStatus",
+            "animeSynopsis",
+            "animeGenres",
+            "animeCharacters",
+            "animeThemes" })
     @ManyToOne
     @JoinColumn(name = "fk_anime_id", referencedColumnName = "anime_id")
     private AnimeModel anime;

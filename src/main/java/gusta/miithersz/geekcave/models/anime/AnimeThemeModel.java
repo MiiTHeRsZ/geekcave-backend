@@ -1,6 +1,9 @@
 package gusta.miithersz.geekcave.models.anime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import gusta.miithersz.geekcave.dto.requests.anime.DTOAnimeThemeModel;
+import gusta.miithersz.geekcave.utils.enumerated.anime.title.AnimeThemeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +38,16 @@ public class AnimeThemeModel {
     @Column(name = "anime_theme_id")
     private Long animeThemeId;
 
+    @JsonIgnoreProperties({
+            "animePin",
+            "animeTier",
+            "animeStudio",
+            "animeSessions",
+            "animeStatus",
+            "animeSynopsis",
+            "animeGenres",
+            "animeCharacters",
+            "animeThemes" })
     @ManyToOne
     @JoinColumn(name = "fk_anime_id", referencedColumnName = "anime_id")
     private AnimeModel anime;
@@ -48,8 +61,7 @@ public class AnimeThemeModel {
     @Column(name = "anime_theme_song_full")
     private String animeThemeSongFull;
 
-    // ! Maybe ENUM ?
     @Column(name = "anime_theme_type")
-    private String animeThemeType;
+    private AnimeThemeType animeThemeType;
 
 }

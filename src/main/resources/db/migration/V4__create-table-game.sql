@@ -15,6 +15,8 @@ CREATE TABLE GAME (
     game_img VARCHAR(100),
     fk_game_developer_id BIGINT NOT NULL,
     game_released DATE,
+    game_prequel BIGINT,
+    game_sequel BIGINT,
 
     FOREIGN KEY (fk_game_developer_id) REFERENCES GAME_DEVELOPER(game_developer_id)
 );

@@ -22,9 +22,11 @@ CREATE TABLE ANIME (
     anime_tier CHAR(5),
     anime_img VARCHAR(100) NOT NULL,
 	fk_anime_studio_id BIGINT NOT NULL,
-    anime_sessions INT NOT NULL,
+    anime_sessions TINYINT NOT NULL,
     anime_status VARCHAR(25),
 	anime_synopsis VARCHAR(500) NOT NULL,
+    anime_prequel BIGINT,
+    anime_sequel BIGINT,
 
     FOREIGN KEY (fk_anime_title_id) REFERENCES ANIME_TITLE(anime_title_id),
     FOREIGN KEY (fk_anime_studio_id) REFERENCES ANIME_STUDIO(anime_studio_id)
@@ -33,7 +35,10 @@ CREATE TABLE ANIME (
 DROP TABLE IF EXISTS ANIME_GENRE;
 CREATE TABLE ANIME_GENRE (
 	anime_genre_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    anime_genre_name VARCHAR(25) NOT NULL
+    fk_anime_id BIGINT NOT NULL,
+    anime_genre_name VARCHAR(50) NOT NULL,
+
+    FOREIGN KEY (fk_anime_id) REFERENCES ANIME(anime_id)
 );
 
 DROP TABLE IF EXISTS ANIME_THEME;
@@ -56,14 +61,4 @@ CREATE TABLE ANIME_CHARACTER (
     anime_character_img VARCHAR(100) NOT NULL,
 
     FOREIGN KEY (fk_anime_id) REFERENCES ANIME(anime_id)
-);
-
-DROP TABLE IF EXISTS ANIME_X_ANIME_GENRE;
-CREATE TABLE ANIME_X_ANIME_GENRE (
-    anime_x_anime_genre_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    fk_anime_id BIGINT NOT NULL,
-    fk_anime_genre_id BIGINT NOT NULL,
-
-    FOREIGN KEY (fk_anime_id) REFERENCES ANIME(anime_id),
-    FOREIGN KEY (fk_anime_genre_id) REFERENCES ANIME_GENRE(anime_genre_id)
 );

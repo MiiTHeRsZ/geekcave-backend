@@ -17,8 +17,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -47,6 +45,8 @@ public class GameModel {
         this.gameImg = game.gameImg();
         this.gameDeveloper = new GameDeveloperModel(game.gameDeveloper());
         this.gameReleased = game.gameReleased();
+        this.gamePrequel = game.gamePrequel();
+        this.gameSequel = game.gameSequel();
         this.gameCharacters = game.gameCharacters();
         this.gameGenres = game.gameGenres();
         this.gameFeatures = game.gameFeatures();
@@ -75,6 +75,12 @@ public class GameModel {
 
     @Column(name = "game_released")
     private Date gameReleased;
+
+    @Column(name = "game_prequel")
+    private Long gamePrequel;
+
+    @Column(name = "game_sequel")
+    private Long gameSequel;
 
     @OneToMany(mappedBy = "game", cascade = { CascadeType.MERGE, CascadeType.REFRESH })
     private Set<GameCharacterModel> gameCharacters;

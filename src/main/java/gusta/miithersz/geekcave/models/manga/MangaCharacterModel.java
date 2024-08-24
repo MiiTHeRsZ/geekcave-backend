@@ -1,5 +1,7 @@
 package gusta.miithersz.geekcave.models.manga;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaCharacterModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,11 +40,22 @@ public class MangaCharacterModel {
     @Column(name = "manga_character_id")
     private Long mangaCharacterId;
 
+    @JsonIgnoreProperties({
+            "mangaPin",
+            "mangaTier",
+            "mangaType",
+            "mangaChapters",
+            "mangaStatus",
+            "mangaSynopsis",
+            "mangaGenres",
+            "mangaCharacters" })
     @ManyToOne
     @JoinColumn(name = "fk_manga_id", referencedColumnName = "manga_id")
     private MangaModel manga;
 
+    @Column(name = "manga_character_name")
     private String mangaCharacterName;
 
+    @Column(name = "manga_character_img")
     private String mangaCharacterImg;
 }
