@@ -34,6 +34,7 @@ public class GameDeveloperModel {
     @Column(name = "game_developer_id")
     private Long gameDeveloperId;
 
+    @Column(name = "game_developer_name")
     private String gameDeveloperName;
 
 }

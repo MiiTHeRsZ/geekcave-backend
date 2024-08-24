@@ -3,6 +3,8 @@ package gusta.miithersz.geekcave.models.game;
 import java.util.Date;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import gusta.miithersz.geekcave.dto.requests.game.DTOGameModel;
 import gusta.miithersz.geekcave.utils.enumerated.game.GameFeature;
 import gusta.miithersz.geekcave.utils.enumerated.game.GameGenre;
@@ -82,6 +84,7 @@ public class GameModel {
     @Column(name = "game_sequel")
     private Long gameSequel;
 
+    @JsonIgnoreProperties("game")
     @OneToMany(mappedBy = "game", cascade = { CascadeType.MERGE, CascadeType.REFRESH })
     private Set<GameCharacterModel> gameCharacters;
 
