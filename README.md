@@ -1,13 +1,11 @@
 # Minha Coleção de Obras da Cultura Pop - Geek Cave
-![Logo do Projeto](caminho_para_o_logo.png)
+<!-- ![Logo do Projeto](caminho_para_o_logo.png) -->
 
 Este projeto é uma aplicação para os amantes da cultura pop. Se você é fã de animes, games, manhwas, mangás e séries, esta plataforma é perfeita para você!
 
 ## Funcionalidades
 - Crie sua própria coleção virtual e adicione todas as obras que você já assistiu, leu ou jogou.
 - Acompanhe seu progresso, mantendo registros detalhados dos episódios ou capítulos em que parou em cada obra.
-- Personalize suas obras adicionando notas, avaliações e comentários.
-- Compartilhe suas recomendações com outros usuários da comunidade.
 - Utilize recursos de busca avançada para encontrar rapidamente as obras de seu interesse.
 - Explore diferentes categorias e gêneros para descobrir novas obras emocionantes.
 
