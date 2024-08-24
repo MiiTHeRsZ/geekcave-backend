@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import gusta.miithersz.geekcave.dto.responses.anime.FinalDTOAnime;
 import gusta.miithersz.geekcave.models.anime.AnimeCharacterModel;
-import gusta.miithersz.geekcave.models.anime.AnimeGenreModel;
 import gusta.miithersz.geekcave.models.anime.AnimeModel;
 import gusta.miithersz.geekcave.models.anime.AnimeThemeModel;
 import gusta.miithersz.geekcave.repositories.anime.AnimeCharacterRepository;
 import gusta.miithersz.geekcave.repositories.anime.AnimeRepository;
 import gusta.miithersz.geekcave.repositories.anime.AnimeThemeRepository;
+import gusta.miithersz.geekcave.utils.enumerated.anime.AnimeGenre;
 
 @Service
 public class FinalAnimeService {
@@ -37,7 +37,7 @@ public class FinalAnimeService {
                 return null;
             }
 
-            List<AnimeGenreModel> animeGenreModels = new ArrayList<>();
+            List<AnimeGenre> animeGenreModels = new ArrayList<>();
 
             List<AnimeCharacterModel> animeCharacterModels = animeCharacterRepository.findAllByAnime_AnimeId(id);
 

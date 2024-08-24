@@ -3,10 +3,10 @@ package gusta.miithersz.geekcave.dto.responses.anime;
 import java.util.List;
 
 import gusta.miithersz.geekcave.models.anime.AnimeCharacterModel;
-import gusta.miithersz.geekcave.models.anime.AnimeGenreModel;
 import gusta.miithersz.geekcave.models.anime.AnimeStudioModel;
 import gusta.miithersz.geekcave.models.anime.AnimeThemeModel;
 import gusta.miithersz.geekcave.models.anime.AnimeTitleModel;
+import gusta.miithersz.geekcave.utils.enumerated.anime.AnimeGenre;
 
 public record FinalDTOAnime(
 		Long animeId,
@@ -18,7 +18,7 @@ public record FinalDTOAnime(
 		Integer animeSessions,
 		String animeStatus,
 		String animeSynopsis,
-		List<AnimeGenreModel> animeGenres,
+		List<AnimeGenre> animeGenres,
 		List<AnimeCharacterModel> animeCharacters,
 		List<AnimeThemeModel> animeThemes) {
 

@@ -2,6 +2,7 @@ package gusta.miithersz.geekcave.models.anime;
 
 import java.util.List;
 
+import gusta.miithersz.geekcave.utils.enumerated.anime.AnimeGenre;
 import jakarta.persistence.OneToMany;
 
 public class FinalAnimeModel {
@@ -15,7 +16,7 @@ public class FinalAnimeModel {
     Integer animeSessions;
     String animeStatus;
     String animeSynopsis;
-    List<AnimeGenreModel> animeGenres;
+    List<AnimeGenre> animeGenres;
 
     @OneToMany(mappedBy = "anime")
     List<AnimeCharacterModel> animeCharacters;
