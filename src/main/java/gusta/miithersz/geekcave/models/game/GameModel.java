@@ -6,6 +6,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import gusta.miithersz.geekcave.dto.requests.game.DTOGameModel;
+import gusta.miithersz.geekcave.models.FranchiseModel;
 import gusta.miithersz.geekcave.utils.enumerated.game.GameFeature;
 import gusta.miithersz.geekcave.utils.enumerated.game.GameGenre;
 import jakarta.persistence.CascadeType;
@@ -19,6 +20,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -42,6 +44,7 @@ public class GameModel {
     public GameModel(DTOGameModel game) {
         this.gameId = game.gameId();
         this.gamePin = game.gamePin();
+        this.franchise = new FranchiseModel(game.franchise());
         this.gameTitle = game.gameTitle();
         this.gameTier = game.gameTier();
         this.gameImg = game.gameImg();
@@ -61,6 +64,10 @@ public class GameModel {
 
     @Column(name = "game_pin")
     private Boolean gamePin;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_franchise_id", referencedColumnName = "franchise_id")
+    private FranchiseModel franchise;
 
     @Column(name = "game_title")
     private String gameTitle;

@@ -5,6 +5,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import gusta.miithersz.geekcave.dto.requests.manga.DTOMangaModel;
+import gusta.miithersz.geekcave.models.FranchiseModel;
 import gusta.miithersz.geekcave.utils.enumerated.manga.MangaGenre;
 import gusta.miithersz.geekcave.utils.enumerated.manga.MangaType;
 import jakarta.persistence.CascadeType;
@@ -18,6 +19,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -41,6 +43,7 @@ public class MangaModel {
     public MangaModel(DTOMangaModel manga) {
         this.mangaId = manga.mangaId();
         this.mangaPin = manga.mangaPin();
+        this.franchise = new FranchiseModel(manga.franchise());
         this.mangaTitle = new MangaTitleModel(manga.mangaTitle());
         this.mangaType = manga.mangaType();
         this.mangaStatus = manga.mangaStatus();
@@ -59,6 +62,10 @@ public class MangaModel {
 
     @Column(name = "manga_pin")
     private Boolean mangaPin;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_franchise_id", referencedColumnName = "franchise_id")
+    private FranchiseModel franchise;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_manga_title_id", referencedColumnName = "manga_title_id")

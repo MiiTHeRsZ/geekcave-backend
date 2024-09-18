@@ -5,6 +5,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import gusta.miithersz.geekcave.dto.requests.anime.DTOAnimeModel;
+import gusta.miithersz.geekcave.models.FranchiseModel;
 import gusta.miithersz.geekcave.utils.enumerated.anime.AnimeGenre;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
@@ -17,6 +18,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -42,6 +44,7 @@ public class AnimeModel {
     public AnimeModel(@Valid DTOAnimeModel anime) {
         this.animeId = anime.animeId();
         this.animePin = anime.animePin();
+        this.franchise = new FranchiseModel(anime.franchise());
         this.animeTitle = new AnimeTitleModel(anime.animeTitle());
         this.animeTier = anime.animeTier();
         this.animeImg = anime.animeImg();
@@ -65,6 +68,10 @@ public class AnimeModel {
 
     @Column(name = "anime_pin")
     private Boolean animePin;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_franchise_id", referencedColumnName = "franchise_id")
+    private FranchiseModel franchise;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_anime_title_id", referencedColumnName = "anime_title_id")

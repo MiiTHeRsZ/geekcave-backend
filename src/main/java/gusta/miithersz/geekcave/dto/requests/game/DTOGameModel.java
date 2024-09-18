@@ -3,6 +3,7 @@ package gusta.miithersz.geekcave.dto.requests.game;
 import java.util.Date;
 import java.util.Set;
 
+import gusta.miithersz.geekcave.dto.requests.DTOFranchiseModel;
 import gusta.miithersz.geekcave.models.game.GameCharacterModel;
 import gusta.miithersz.geekcave.utils.enumerated.game.GameFeature;
 import gusta.miithersz.geekcave.utils.enumerated.game.GameGenre;
@@ -10,6 +11,7 @@ import gusta.miithersz.geekcave.utils.enumerated.game.GameGenre;
 public record DTOGameModel(
 		Long gameId,
 		Boolean gamePin,
+		DTOFranchiseModel franchise,
 		String gameTitle,
 		String gameTier,
 		String gameImg,
