@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @RestController
 @RequestMapping("/anime")
 /* @EnableMethodSecurity(securedEnabled = true) */
@@ -35,15 +34,14 @@ public class AnimeController {
     @Autowired
     private AnimeService animeService;
 
-    @Autowired 
+    @Autowired
     private FinalAnimeService finalAnimeService;
-    
+
     /* Return 204 no content, set this default */
     @PostMapping
     @Transactional
     public ResponseEntity<?> postAnime(@RequestBody @Valid DTOAnimeModel anime) {
         try {
-            System.out.println(anime);
             return new ResponseEntity<AnimeModel>(animeService.postAnime(new AnimeModel(anime)), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -54,24 +52,24 @@ public class AnimeController {
     public ResponseEntity<?> getAnimeList(@PageableDefault(size = 10) Pageable pageable) {
         try {
             Page<AnimeModel> animes = animeService.getAnimeList(pageable);
-            
+
             if (animes.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            
+
             return new ResponseEntity<Page<AnimeModel>>(animes, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getAnimeById(@PathVariable Long id) {
         try {
             if (animeService.getAnimeById(id) == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            
+
             return new ResponseEntity<AnimeModel>(animeService.getAnimeById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -84,13 +82,13 @@ public class AnimeController {
             if (finalAnimeService.getFullAnimeById(id) == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            
+
             return new ResponseEntity<FinalDTOAnime>(finalAnimeService.getFullAnimeById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> putAnimeById(@PathVariable Long id, @RequestBody @Valid DTOAnimeModel anime) {
@@ -100,14 +98,14 @@ public class AnimeController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @DeleteMapping("/{id}")
     @Transactional
     /* @Secured("ROLE_ADMIN") */
     public ResponseEntity<?> deleteAnimeById(@PathVariable Long id) {
         try {
             animeService.deleteAnimeById(id);
-            
+
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
