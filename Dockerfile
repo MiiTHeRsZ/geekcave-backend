@@ -12,5 +12,5 @@ FROM openjdk:21-jdk-slim
 
 EXPOSE 8080
 
-COPY --from=build /target/geekcave-0.3-A M G Build.jar app.jar
+COPY --from=build /target/geekcave-0.3-Build.jar app.jar
 ENTRYPOINT [ "java", "-jar", "app.jar" ]
